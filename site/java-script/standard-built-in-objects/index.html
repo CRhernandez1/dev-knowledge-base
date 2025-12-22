@@ -1,0 +1,948 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.14">
+    
+    
+      
+        <title>Standard Built-in Objects - knowledge base</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.f1b6466b.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+  <style>:root{}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#standard-built-in-objects" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="knowledge base" class="md-header__button md-logo" aria-label="knowledge base" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            knowledge base
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Standard Built-in Objects
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Buscar">
+  <button type="button" class="md-search__button">
+    Buscar
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="knowledge base" class="md-nav__button md-logo" aria-label="knowledge base" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    knowledge base
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaScript
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    JavaScript
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standard Built-in Objects
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standard Built-in Objects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Métodos de String
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Métodos de String">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#busqueda-y-comprobacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Búsqueda y Comprobación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extraccion-y-corte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extracción y Corte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modificacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modificación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caracteres-y-relleno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caracteres y Relleno
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buenas-practicas-modernas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Buenas Prácticas Modernas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slice-vs-substring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slice vs Substring
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducción
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metodos-de-string" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Métodos de String
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Métodos de String">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#busqueda-y-comprobacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Búsqueda y Comprobación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extraccion-y-corte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extracción y Corte
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modificacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Modificación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caracteres-y-relleno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Caracteres y Relleno
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buenas-practicas-modernas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Buenas Prácticas Modernas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slice-vs-substring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slice vs Substring
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="standard-built-in-objects">Standard Built-in Objects<a class="headerlink" href="#standard-built-in-objects" title="Permanent link">&para;</a></h1>
+<h2 id="introduccion">Introducción<a class="headerlink" href="#introduccion" title="Permanent link">&para;</a></h2>
+<p>En JavaScript, no empiezas desde cero. El lenguaje viene con una "caja de herramientas" preinstalada lista para usar en cualquier parte de tu código, sin necesidad de importar librerías externas. A estos se les llama <strong>Objetos Estándar Incorporados</strong>.</p>
+<p>¿Qué son exactamente?</p>
+<p>Son objetos que existen en el <strong>ámbito global</strong> (Global Scope). Esto significa que están disponibles en cualquier script y en cualquier momento.</p>
+<p>Se dividen principalmente en tres categorías:</p>
+<ol>
+<li><strong>Envoltorios de Primitivos:</strong> Objetos que nos permiten tratar datos simples (texto, números) como si fueran objetos complejos (<code>String</code>, <code>Number</code>, <code>Boolean</code>).</li>
+<li><strong>Estructuras de Datos:</strong> Herramientas para organizar información (<code>Array</code>, <code>Map</code>, <code>Set</code>, <code>Object</code>).</li>
+<li><strong>Utilidades:</strong> Objetos que funcionan como una librería de funciones matemáticas, manejo de fechas o procesamiento de datos (<code>Math</code>, <code>Date</code>, <code>JSON</code>).</li>
+</ol>
+<p>¿Qué nos proporcionan?</p>
+<p>Estos objetos nos facilitan la vida proporcionando dos cosas clave: <strong>Propiedades</strong> (datos) y <strong>Métodos</strong> (acciones).</p>
+<ol>
+<li>
+<p>Métodos de manipulación
+En lugar de escribir una función compleja para buscar un texto dentro de otro, el objeto <code>String</code> ya trae <code>.includes()</code>. En lugar de calcular una raíz cuadrada a mano, <code>Math</code> trae <code>.sqrt()</code>.</p>
+</li>
+<li>
+<p>Conversión de Tipos
+Nos permiten transformar datos de un tipo a otro de forma segura.
+Ejemplo: <code>Number("10")</code> convierte un string a número.</p>
+</li>
+<li>
+<p>Constantes Universales
+Valores que nunca cambian y son necesarios matemáticamente o por configuración.
+Ejemplo: <code>Math.PI</code> o <code>Number.MAX_VALUE</code>.</p>
+</li>
+</ol>
+<h2 id="metodos-de-string">Métodos de String<a class="headerlink" href="#metodos-de-string" title="Permanent link">&para;</a></h2>
+<p>JavaScript proporciona una gran cantidad de métodos para manipular texto.</p>
+<blockquote>
+<p>⚠️ <strong>Inmutabilidad:</strong>
+Recuerda que los Strings en JS son <strong>inmutables</strong>. Ninguno de estos métodos modifica la variable original; todos devuelven un <strong>nuevo string</strong> con los cambios aplicados.</p>
+</blockquote>
+<p>Leyenda de Frecuencia</p>
+<ul>
+<li>🟢 <strong>Esencial:</strong> De uso diario.</li>
+<li>🟡 <strong>Ocasional:</strong> Para casos específicos.</li>
+<li>🔴 <strong>Raro / Legacy:</strong> Existen formas más modernas o mejores de hacerlo.</li>
+</ul>
+<h3 id="busqueda-y-comprobacion">Búsqueda y Comprobación<a class="headerlink" href="#busqueda-y-comprobacion" title="Permanent link">&para;</a></h3>
+<p>Responden preguntas sobre el contenido. Devuelven <code>boolean</code> (true/false) o índices numéricos.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Uso</th>
+<th style="text-align: left;">Método</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">🟢</td>
+<td style="text-align: left;"><strong><code>.includes(txt)</code></strong></td>
+<td style="text-align: left;">¿Contiene el texto?</td>
+<td style="text-align: left;"><code>"Hola".includes("o")</code> // <code>true</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">🟢</td>
+<td style="text-align: left;"><strong><code>.startsWith(txt)</code></strong></td>
+<td style="text-align: left;">¿Empieza por...?</td>
+<td style="text-align: left;"><code>"img.jpg".startsWith("img")</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">🟢</td>
+<td style="text-align: left;"><strong><code>.endsWith(txt)</code></strong></td>
+<td style="text-align: left;">¿Termina en...?</td>
+<td style="text-align: left;"><code>"file.js".endsWith(".js")</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">🟡</td>
+<td style="text-align: left;"><strong><code>.indexOf(txt)</code></strong></td>
+<td style="text-align: left;">Posición donde empieza (o <code>-1</code>).</td>
+<td style="text-align: left;"><code>"Hola".indexOf("a")</code> // <code>3</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">🟡</td>
+<td style="text-align: left;"><strong><code>.lastIndexOf(txt)</code></strong></td>
+<td style="text-align: left;">Igual, pero busca desde el final.</td>
+<td style="text-align: left;"><code>"anana".lastIndexOf("a")</code> // <code>4</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">🔴</td>
+<td style="text-align: left;"><strong><code>.search(regex)</code></strong></td>
+<td style="text-align: left;">Busca con Regex. Suele usarse <code>.match</code>.</td>
+<td style="text-align: left;"><code>"Hola".search(/H/)</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="extraccion-y-corte">Extracción y Corte<a class="headerlink" href="#extraccion-y-corte" title="Permanent link">&para;</a></h3>
+<p>Para obtener fragmentos del texto o convertirlo en Arrays.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Uso</th>
+<th style="text-align: left;">Método</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">🟢</td>
+<td style="text-align: left;"><strong><code>.slice(ini, fin)</code></strong></td>
+<td style="text-align: left;">Corta un trozo. Admite negativos.</td>
+<td style="text-align: left;"><code>"React".slice(0, 2)</code> // <code>"Re"</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">🟢</td>
+<td style="text-align: left;"><strong><code>.split(sep)</code></strong></td>
+<td style="text-align: left;">Divide el texto en un <strong>Array</strong>.</td>
+<td style="text-align: left;"><code>"a-b".split("-")</code> // <code>['a','b']</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">🔴</td>
+<td style="text-align: left;"><strong><code>.substring(ini, fin)</code></strong></td>
+<td style="text-align: left;">Como slice, pero sin negativos.</td>
+<td style="text-align: left;"><em>Usa <code>.slice()</code> mejor.</em></td>
+</tr>
+<tr>
+<td style="text-align: center;">⛔</td>
+<td style="text-align: left;"><strong><code>.substr()</code></strong></td>
+<td style="text-align: left;"><strong>Obsoleto</strong>. No usar.</td>
+<td style="text-align: left;">--</td>
+</tr>
+</tbody>
+</table>
+<h3 id="modificacion">Modificación<a class="headerlink" href="#modificacion" title="Permanent link">&para;</a></h3>
+<p>Transforman el texto (retornando uno nuevo).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Uso</th>
+<th style="text-align: left;">Método</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">🟢</td>
+<td style="text-align: left;"><strong><code>.replace(a, b)</code></strong></td>
+<td style="text-align: left;">Reemplaza la <strong>primera</strong> coincidencia.</td>
+<td style="text-align: left;"><code>"x x".replace("x", "y")</code> // <code>"y x"</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">🟢</td>
+<td style="text-align: left;"><strong><code>.replaceAll(a, b)</code></strong></td>
+<td style="text-align: left;">Reemplaza <strong>todas</strong> las coincidencias.</td>
+<td style="text-align: left;"><code>"x x".replaceAll("x", "y")</code> // <code>"y y"</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">🟢</td>
+<td style="text-align: left;"><strong><code>.toUpperCase()</code></strong></td>
+<td style="text-align: left;">Convierte a MAYÚSCULAS.</td>
+<td style="text-align: left;"><code>"a".toUpperCase()</code> // <code>"A"</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">🟢</td>
+<td style="text-align: left;"><strong><code>.toLowerCase()</code></strong></td>
+<td style="text-align: left;">Convierte a minúsculas.</td>
+<td style="text-align: left;"><code>"B".toLowerCase()</code> // <code>"b"</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">🟢</td>
+<td style="text-align: left;"><strong><code>.trim()</code></strong></td>
+<td style="text-align: left;">Quita espacios a los lados.</td>
+<td style="text-align: left;"><code>" x ".trim()</code> // <code>"x"</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">🟡</td>
+<td style="text-align: left;"><strong><code>.trimStart()</code></strong></td>
+<td style="text-align: left;">Quita espacios solo del inicio.</td>
+<td style="text-align: left;"><code>" x".trimStart()</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">🟡</td>
+<td style="text-align: left;"><strong><code>.repeat(n)</code></strong></td>
+<td style="text-align: left;">Repite el string <code>n</code> veces.</td>
+<td style="text-align: left;"><code>"Ha".repeat(3)</code> // <code>"HaHaHa"</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">🔴</td>
+<td style="text-align: left;"><strong><code>.concat(str)</code></strong></td>
+<td style="text-align: left;">Une textos.</td>
+<td style="text-align: left;"><em>Usa el operador <code>+</code> o Template Strings.</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="caracteres-y-relleno">Caracteres y Relleno<a class="headerlink" href="#caracteres-y-relleno" title="Permanent link">&para;</a></h3>
+<p>Manipulación visual o acceso a caracteres.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Uso</th>
+<th style="text-align: left;">Método</th>
+<th style="text-align: left;">Descripción</th>
+<th style="text-align: left;">Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">🟡</td>
+<td style="text-align: left;"><strong><code>.charAt(i)</code></strong></td>
+<td style="text-align: left;">Letra en la posición <code>i</code>.</td>
+<td style="text-align: left;"><code>"Hola".charAt(0)</code> // <code>"H"</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">🟡</td>
+<td style="text-align: left;"><strong><code>.padStart(len, c)</code></strong></td>
+<td style="text-align: left;">Rellena al inicio.</td>
+<td style="text-align: left;"><code>"5".padStart(2,"0")</code> // <code>"05"</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">🟡</td>
+<td style="text-align: left;"><strong><code>.padEnd(len, c)</code></strong></td>
+<td style="text-align: left;">Rellena al final.</td>
+<td style="text-align: left;"><code>"Hi".padEnd(4,".")</code> // <code>"Hi.."</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">🔴</td>
+<td style="text-align: left;"><strong><code>.charCodeAt(i)</code></strong></td>
+<td style="text-align: left;">Devuelve el código Unicode.</td>
+<td style="text-align: left;"><code>"A".charCodeAt(0)</code> // <code>65</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="buenas-practicas-modernas">Buenas Prácticas Modernas<a class="headerlink" href="#buenas-practicas-modernas" title="Permanent link">&para;</a></h3>
+<h3 id="slice-vs-substring">Slice vs Substring<a class="headerlink" href="#slice-vs-substring" title="Permanent link">&para;</a></h3>
+<p>Usa siempre <strong><code>.slice()</code></strong>. Es más versátil porque permite índices negativos para contar desde el final (ej: "los últimos 2 caracteres").</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;JavaScript&quot;</span><span class="p">;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">text</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mf">6</span><span class="p">));</span><span class="w"> </span><span class="c1">// &quot;Script&quot;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1">// .substring(-6) no funcionaría</span>
+</span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":[],"search":"../../assets/javascripts/workers/search.1bfe1b73.min.js","tags":null,"translations":{"clipboard.copied":"Copiado al portapapeles","clipboard.copy":"Copiar al portapapeles","search.result.more.one":"1 más en esta página","search.result.more.other":"# más en esta página","search.result.none":"No se encontraron documentos","search.result.one":"1 documento encontrado","search.result.other":"# documentos encontrados","search.result.placeholder":"Teclee para comenzar búsqueda","search.result.term.missing":"Falta","select.version":"Seleccionar versión"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.6008f134.min.js"></script>
+      
+    
+  </body>
+</html>

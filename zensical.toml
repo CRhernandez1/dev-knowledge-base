@@ -5,12 +5,19 @@ nav = [
     { "Home" = "index.md" },           
     { "JavaScript" = [
         "java-script/index.md",
-        "java-script/standard-built-in-objects.md"
+        "java-script/standard-built-in-objects.md",
+    ] },
+    { "SQL" = [
+        "sql/index.md",
+        {"SQLite" = "sql/sqlite.md"},
     ] },
 ]
 
 [project.theme]
 language = "es"
+features = [
+    "navigation.tabs"
+]
 
 
 

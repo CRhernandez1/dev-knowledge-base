@@ -461,6 +461,206 @@ do {
     // El bucle se repite SI el número es menor a 1 O mayor a 10
 } while (number < 0 || number > 10);
 ```
+## Funciones
+
+### Tipos principales
+
+#### Tradicional
+
+```javascript
+function calcAge1(birthYear) {
+    return 2037 - birthYear;
+}
+```
+
+> **Característica Clave:** Pueden ser llamadas **antes** de ser definidas en el código gracias al **Hoisting** (elevación). El motor de JS las lee antes de ejecutar nada.
+
+#### Function Expression
+
+Guardamos una función (anónima) dentro de una variable.
 
 
+```javascript
+const calcAge2 = function (birthYear) {
+    return 2037 - birthYear;
+}
+```
 
+> **Característica Clave:** No tienen Hoisting. Te obligan a definir antes de usar (lo cual fomenta un código más ordenado). En JS, **una función es un valor**, igual que un número o un string.
+
+#### C. Arrow Function 
+
+Sintaxis moderna, rápida y limpia para funciones.
+
+```javascript
+const calcAge3 = (birthYear) => 2037 - birthYear;
+// En caso de tener solo un argumento no es obligatorio poner el paréntesis, pero se recomienda ponerlo siempre por uniformidad del código.
+
+```
+- Cuando la función tiene una sola expresión, el valor se retorna de forma implícita.
+
+- Si tiene un solo parámetro, los paréntesis no son obligatorios, pero se recomienda usarlos por consistencia y legibilidad.
+
+```javascript
+const calcAge3 = (birthYear) => {
+    const result = 2037 - birthYear;
+    return result;
+} 
+```
+
+Cuando la función tiene más de una instrucción (statement), es obligatorio:
+
+- Usar llaves {}
+
+- Usar return explícito
+
+
+> **Diferencia Crítica:** No tienen su propio `this`. Toman el `this` del padre (lexical `this`).
+
+### Párametros por defecto
+
+- **Evaluación Dinámica:** En JS, los parámetros por defecto se evalúan en tiempo de llamada, lo que permite usar parámetros anteriores para calcular los siguientes.
+    
+    ```javascript
+    const booking = function(flightNum, numPassengers = 1, price = 199 * numPassengers) {
+        // 'price' se calcula usando 'numPassengers' al vuelo
+    };
+    ```
+    
+- **Saltar argumentos:** No puedes hacer `booking('LH123', , 200)`. Si quieres usar el default del medio, tienes que pasar explícitamente `undefined`.
+    - `booking('LH123', undefined, 200)` -> `numPassengers` será 1.
+
+### Argumentos por valor vs por referencia.
+
+1. **Primitivos (Ej: Numbers, Strings):** Se pasan por **copia**. Si la función cambia el valor, la variable original fuera **NO** cambia.
+
+2. **Objetos (Arrays, Objects):** Se pasa la **referencia (dirección de memoria)**.
+Si modificas una propiedad del objeto dentro de la función, **el objeto original fuera de la función muta**.
+
+### First-Class vs Higher-Order Functions
+
+JavaScript trata a las funciones como **First-Class Citizens** (Ciudadanos de primera clase). Significa que las funciones son **valores**, igual que un número `5` o un string `'hola'`.
+
+A. Higher-Order Functions (Funciones de Orden Superior)
+
+Es cualquier función que cumple al menos una de estas dos condiciones:
+
+1. **Recibe** una función como argumento (Callback).
+2. **Retorna** una nueva función.
+
+B. El patrón Callback (Abstracción)
+
+
+```javascript
+// HOF (Recibe la función)
+const transformador = function(str, fn) {
+    console.log(`Transformando: ${str}`);
+    return fn(str); // Ejecuta la función que le pasaron
+}
+
+// Callbacks (Herramientas)
+const upper = str => str.toUpperCase();
+const oneWord = str => str.replace(/ /g, '').toLowerCase();
+
+transformador('JavaScript es genial', upper);
+transformador('JavaScript es genial', oneWord);
+```
+
+> Por qué lo hacemos: Abstracción. transformador no se preocupa de cómo se transforma el texto, solo delega esa tarea.
+
+### IIFE (Immediately Invoked Function Expressions)
+
+Un patrón antiguo pero que verás en código legacy. Sirve para ejecutar una función una única vez y crear un scope privado (antes de que existieran `let` y `const`).
+
+
+```javasript
+
+(function() {
+    console.log('Esto nunca se ejecutará de nuevo');
+    const isPrivate = 23;
+})();
+
+```
+
+- **Hoy en día:** Simplemente usamos un bloque `{ const isPrivate = 23; }` para privacidad.
+
+## Objetos 
+
+A diferencia de los datos "primitivos" (que solo guardan un valor único), los objetos permiten almacenar colecciones de datos y entidades más complejas. Son fundamentales en JavaScript.
+
+Conceptos Básicos
+---
+Imagina un objeto como un gabinete de archivos:
+
+Cada dato se guarda en un "archivo" identificado por una clave (nombre).
+
+Dentro del archivo está el valor.
+
+Creación: Existen dos sintaxis, aunque la de "objeto literal" es la más común:
+
+```javascript
+let user = new Object(); // Constructor de objetos (menos común)
+let user = {};           // Objeto literal (estándar)
+```
+
+Estructura: Se definen mediante pares clave: valor.
+
+
+```javascript
+let user = {
+  name: "John", // Clave: "name", Valor: "John"
+  age: 30       // Clave: "age", Valor: 30
+};
+```
+Claves: Son siempre strings o símbolos. Si usas otro tipo, se convierte automáticamente a string.
+
+Valores: Pueden ser cualquier tipo de dato (boolean, número, otro objeto, etc.).
+
+### Dot Notation vs. Bracket Notation
+
+Se puede acceder a las propiedades de los objetos de dos formas:
+
+1. **Dot Notation (`objeto.propiedad`):**
+    - Más limpio y fácil de leer.
+    - Solo funciona si conoces el nombre exacto de la propiedad al escribir el código.
+2. **Bracket Notation (`objeto['propiedad']`):**
+    - Permite usar **expresiones**. Puedes poner una variable dentro de los corchetes.
+    - *Ejemplo:* `objeto['first' + namePart]`
+
+#### Posibles Errores
+
+```javascript
+const jonas = {
+    firstName: 'Jonas',
+    job: 'Teacher',
+    age: 30
+};
+```
+
+// Bucle clásico para objetos 
+```javascript
+for (const key in jonas) {
+    // 'key' es una variable que va cambiando: 'firstName', 'job', 'age'...
+    
+    console.log(jonas.key);   // ❌ ERROR (Undefined)
+    console.log(jonas[key]);  // ✅ CORRECTO
+}
+```
+
+El problema es cómo el motor de JavaScript "lee" (parsea) tu código.
+
+A. Dot Notation (`jonas.key`) = Literal
+
+Cuando el motor ve un punto, **apaga su cerebro evaluador**. Interpreta lo que viene después como un **String Literal**.
+
+- Instrucción: *"Busca dentro del objeto `jonas` una propiedad que se llame, LITERALMENTE, 'key'"*.
+- Resultado: `undefined` (porque `jonas` no tiene ninguna propiedad llamada "key", tiene "firstName", "job", etc.).
+
+B. Bracket Notation (`jonas[key]`) = Expresión
+
+Cuando el motor ve corchetes, sabe que tiene que **evaluar una expresión** primero.
+
+1. Instrucción: *"¿Qué hay dentro de los corchetes? Ah, una variable llamada `key`"*.
+2. Evaluación: *"¿Cuánto vale `key` ahora mismo? Vale 'firstName'"*.
+3. Ejecución final: *"Busca dentro de `jonas` la propiedad 'firstName'"*.
+4. Resultado: `'Jonas'` (Correcto).

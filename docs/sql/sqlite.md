@@ -107,15 +107,13 @@ Con Alias: SELECT AVG(calificacion) AS Promedio ... -> La columna se llamará "P
 
 Aunque tú lo escribes en un orden, SQL lo "piensa" así:
 
-FROM: ¿De qué tabla saco los datos?
-
-WHERE: Filtro lo que no sirve.
-
-SELECT: Elijo las columnas que quiero.
-
-ORDER BY: Ordeno el resultado final.
-
-LIMIT: Corto el resultado si es necesario.
+- FROM & JOIN (¿De dónde saco los datos?)
+- WHERE (Filtrar filas)
+- GROUP BY (Agrupar)
+- HAVING (Filtrar grupos)
+- SELECT (¿Qué columnas muestro?)
+- ORDER BY (Ordenar resultados)
+- LIMIT (Limitar cantidad)
 
 ## `SELECT`
 
@@ -142,6 +140,8 @@ También tenemos operadores lógicos: `AND`, `OR`, `NOT`
 ```sql
 SELECT "title", "year" FROM "books"
 WHERE "year" = 2021 or "year" = 2022;
+--También para rangos, tenemos el BETWEEN
+-- Con between sería WHERE "year" BETWEEN 2021 AND 2022;
 ```
 
 En el caso de que la tabla books tuviera un campo / columna year (año de publicación del libro). Si solo queremos los que salieron entre el año 2021 y el 2022 podemos combinar el where con un or. OJO: No un and, ya que si miramos una fila concreta y primero preguntamos year es igual a 2021 y la respuesta es si, ya no es posible que ese year sea 2022. En cambio con el or, si no es igual a 2021, revisa si es 2022, y si es alguno de los dos, obtine la fila.
@@ -245,4 +245,261 @@ Sirve para responder preguntas como: "¿Cuántos autores diferentes tengo?".
 ```sql
 SELECT COUNT(DISTINCT autor) FROM libros;
 -- Cuenta cuántos autores únicos existen en la base de datos.
+```
+
+## La importancia del modelo relacional
+
+Cuando usamos una sola tabla para todo (como una hoja de cálculo gigante), parece más fácil al principio porque "lo ves todo junto". Sin embargo, esto genera tres problemas graves que destruyen la calidad de tus datos a largo plazo.
+
+Supongamos que tenemos esta tabla única de Libros:
+
+| Título           | Autor           | Email Autor        | Editorial  | Dirección Editorial |
+|------------------|-----------------|--------------------|------------|---------------------|
+| Harry Potter 1   | J.K. Rowling    | jk@rowling.com     | Salamandra | Calle Falsa 123     |
+| Harry Potter 2   | J.K. Rowling    | jk@rowling.com     | Salamandra | Calle Falsa 123     |
+| Harry Potter 3   | J.K. Rowling    | jk@rowling.com     | Salamandra | Calle Falsa 123     |
+| El Principito    | Saint-Exupéry   | ant@exupery.fr     | Salamandra | Calle Falsa 123     |
+
+
+
+**Redundancia de Datos (Desperdicio de Espacio)**
+
+El Problema: Fíjate en la tabla de arriba. Hemos escrito "J.K. Rowling", su email, "Salamandra" y la dirección "Calle Falsa 123" repetidas veces.
+
+La Consecuencia: Si la biblioteca tiene 1 millón de libros, estarás guardando millones de veces la misma dirección de la editorial. Esto hace que la base de datos sea pesada, lenta y costosa de almacenar.
+
+**La Pesadilla de la Actualización (Anomalía de Modificación)**
+
+Este es el problema más peligroso.
+
+El Escenario: Imagina que la Editorial Salamandra se muda de "Calle Falsa 123" a "Avenida Real 45".
+
+En una sola tabla: Tienes que buscar todas las filas donde aparezca "Salamandra" (quizás sean 50.000 libros) y cambiar la dirección una por una.
+
+El Riesgo: Si el sistema falla a la mitad o se te olvida una fila, tendrás datos corruptos: algunos libros dirán que la editorial está en la calle vieja y otros en la nueva. Tu base de datos ha dejado de ser confiable.
+
+**Rigidez de Datos (Anomalía de Inserción)**
+
+El Problema: En una tabla única, no puedes guardar información sobre algo si no tienes el dato completo de la fila.
+
+Ejemplo: Quieres registrar a un nuevo autor prometedor en tu base de datos, pero aún no ha publicado ningún libro.
+
+El Bloqueo: Como la tabla es de "Libros", no puedes crear una fila solo para el autor (o tendrías que dejar el título como NULL, lo cual es sucio). El sistema te obliga a inventar un libro falso o a no guardar al autor.
+
+**La Solución: El Modelo Relacional (Varias Tablas)**
+
+La solución es dividir la información en entidades lógicas (autores, editoriales, libros) y conectarlas mediante IDs.
+
+- Ventajas Inmediatas:
+
+  Fuente Única de la Verdad (SSOT):
+  La dirección de "Salamandra" se escribe una sola vez en la tabla publishers.
+
+  Si se mudan, solo cambias ese dato una vez. Automáticamente, los 50.000 libros que apuntan a ese ID de editorial estarán "actualizados" porque simplemente están leyendo la referencia.
+
+- Eficiencia:
+
+  En lugar de repetir el texto "J.K. Rowling" (12 bytes) millones de veces, solo repites el número 1 (4 bytes). El ahorro de espacio es gigantesco.
+
+- Flexibilidad:
+
+  Puedes añadir un autor a la tabla authors aunque no tenga libros todavía. Existe independientemente.
+
+## Tipos de Relaciones 
+
+**Uno a Uno (One-to-One):** Un autor escribe solo un libro y un libro es escrito por solo un autor (poco común en la realidad).
+
+**Uno a Muchos (One-to-Many):** Un editor (publisher) publica muchos libros, pero un libro específico pertenece a un solo editor.
+
+**Muchos a Muchos (Many-to-Many):** Un autor puede escribir muchos libros, y un libro puede tener múltiples autores (coautores).
+
+### Diagramas ER (Entity Relationship)
+
+  Se usan para visualizar estas relaciones. Se utiliza la Notación de Pata de Gallo (Crow's Foot notation):
+  
+  - Línea simple: Relación "Uno".
+  - Pata de gallo (tres líneas): Relación "Muchos".
+  - Círculo: Opcional (Cero).
+
+## Keys (Claves): El Pegamento de los Datos
+
+Las claves son el mecanismo que permite que las relaciones funcionen. Sin ellas, las tablas serían islas aisladas.
+
+- A. Primary Key (PK) - La Identidad
+  Qué es: Es la columna que identifica de forma única e irrepetible a cada fila de una tabla.
+
+  Reglas:
+
+  - Nunca puede ser NULL (vacío).
+  - Nunca puede repetirse.
+
+  > Mejor Práctica: Aunque existen identificadores naturales (como el DNI o ISBN), en bases de datos casi siempre usamos un número entero autoincremental (id: 1, 2, 3...) porque es más rápido para el ordenador procesarlo.
+
+
+- B. Foreign Key (FK) - La Referencia
+  Qué es: Es una columna que apunta a la Primary Key de otra tabla. Es como guardar un "link" o acceso directo hacia otra fila.
+
+  Función: Crea la restricción de integridad referencial. (No puedes poner un publisher_id = 99 si la editorial 99 no existe en la tabla de editoriales).
+
+**Ejemplo práctico de conexión entre tablas (PK y FK)**
+  Tabla: Editoriales (publishers)
+
+  La Primary Key (PK) es id, identifica de forma única a cada editorial.
+
+  | id (PK) | nombre      |
+  |---------|-------------|
+  | 5       | Salamandra  |
+  | 6       | Anagrama    |
+
+  Tabla: Libros (books)
+
+  Aquí id es la Primary Key (PK) y publisher_id es la Foreign Key (FK) que apunta a publishers.id.
+
+  | id (PK) | titulo          | publisher_id (FK) |
+  |---------|-----------------|-------------------|
+  | 101     | Harry Potter    | 5                 |
+  | 102     | El Principito   | 5                 |
+  | 103     | Seda            | 6                 |
+
+  - Interpretación (cómo lo entiende SQL)
+  - El libro con id = 101 tiene publisher_id = 5
+  - SQL va a la tabla publishers
+  - Busca id = 5
+  - Encuentra Salamandra
+  - Conclusión: “Harry Potter es de la editorial Salamandra”
+
+  > El número 5 es el pegamento que conecta ambas tablas.
+
+## Subconsultas (Subqueries)
+
+Son consultas anidadas (una dentro de otra). Se usan cuando necesitas un dato de otra tabla para completar tu filtro.
+
+Sintaxis Básica
+La consulta interna (entre paréntesis) se ejecuta primero.
+
+Ejemplo: Encontrar todos los libros publicados por "Fitzcarraldo Editions".
+
+- Primero necesitamos el ID de la editorial.
+- Luego usamos ese ID para buscar los libros.
+
+
+```sql
+SELECT title 
+FROM books 
+WHERE publisher_id = (
+    SELECT id 
+    FROM publishers 
+    WHERE publisher = 'Fitzcarraldo Editions'
+);
+```
+### El Operador IN
+
+Si la subconsulta devuelve más de un resultado (ej. un autor con múltiples IDs o múltiples libros), no podemos usar =, debemos usar IN.
+
+Ejemplo: Encontrar libros de la autora "Fernanda Melchor".
+
+```sql
+SELECT title 
+FROM books 
+WHERE id IN (
+    SELECT book_id 
+    FROM authored 
+    WHERE author_id = (
+        SELECT id 
+        FROM authors 
+        WHERE name = 'Fernanda Melchor'
+    )
+);
+```
+> Consejo de estilo: Es recomendable indentar las subconsultas para facilitar la lectura.
+
+## JOINs (Uniones de Tablas)
+
+Las subconsultas son útiles, pero JOIN permite combinar filas de dos o más tablas en una sola tabla de resultados temporal.
+
+Sintaxis JOIN (o INNER JOIN)
+Combina tablas basándose en una columna común. Solo muestra filas donde hay coincidencia en ambas tablas.
+
+Ejemplo (Base de datos de Leones Marinos): Queremos ver qué leones marinos (sea_lions) tenemos rastreados en la tabla de migraciones (migrations).
+
+
+```sql
+SELECT * FROM sea_lions
+JOIN migrations ON migrations.id = sea_lions.id;
+```
+
+Tipos de JOIN
+
+- INNER JOIN (Por defecto): Excluye filas que no tienen pareja en la otra tabla (ej. un león marino sin datos de migración desaparece del resultado).
+
+- LEFT JOIN: Muestra todas las filas de la tabla izquierda (la primera mencionada), aunque no tengan coincidencia en la derecha (rellena con NULL).
+
+```
+SELECT * FROM sea_lions LEFT JOIN migrations ON ...
+```
+
+- RIGHT JOIN: Muestra todas las filas de la tabla derecha, aunque no tengan coincidencia en la izquierda.
+
+- FULL JOIN: Muestra todo de ambas tablas, rellenando con NULL donde falten datos.
+
+- NATURAL JOIN
+  Es un atajo. Si las dos tablas tienen una columna con el mismo nombre (ej. ambas tienen una columna id), SQL las une automáticamente sin que escribas la cláusula ON.
+
+```sql
+SELECT * FROM sea_lions NATURAL JOIN migrations;
+```
+
+## Operaciones de Conjuntos (Sets)
+
+SQL permite tratar los resultados como conjuntos matemáticos (Diagramas de Venn). Requisito: Las tablas deben tener el mismo número y tipo de columnas.
+
+- UNION (O): Combina los resultados de dos consultas (A + B). Elimina duplicados.
+
+    >Ejemplo: Autores O Traductores.
+
+- INTERSECT (Y): Devuelve solo los elementos que aparecen en ambas consultas.
+
+    >Ejemplo: Personas que son Autores Y TAMBIÉN Traductores.
+
+- EXCEPT (Menos): Devuelve los elementos de la primera consulta menos los de la segunda.
+
+    >Ejemplo: Autores que NO son Traductores.
+
+Ejemplo de sintaxis:
+
+```sql
+SELECT name FROM authors
+INTERSECT
+SELECT name FROM translators;
+```
+
+## Agrupamiento (Groups)
+
+A veces queremos calcular estadísticas por categorías, no de toda la tabla.
+
+GROUP BY
+
+Agrupa filas que tienen el mismo valor en una columna especificada para aplicar funciones de agregación (AVG, COUNT, MAX, etc.).
+
+Ejemplo: Calcular el promedio de calificación (rating) por cada libro.
+```
+SELECT book_id, AVG(rating) 
+FROM ratings 
+GROUP BY book_id;
+```
+HAVING
+Es el equivalente a WHERE, pero para grupos.
+
+- WHERE: Filtra filas individuales antes de agrupar.
+
+- HAVING: Filtra grupos después de agrupar.
+
+Ejemplo: Mostrar solo los libros con un promedio de calificación mayor a 4.0.
+
+
+```sql
+SELECT book_id, AVG(rating) 
+FROM ratings 
+GROUP BY book_id 
+HAVING AVG(rating) > 4.0;
 ```

@@ -423,6 +423,16 @@ for (const animal of animals) {
 }
 ```
 
+#### for in 
+
+El bucle **`for...in`** se utiliza para **recorrer las propiedades (claves)** de un objeto. En cada iteración, devuelve el **nombre de la clave**, no el valor directamente.
+
+```javascript
+for (let key in object) {
+  // código a ejecutar
+}
+```
+
 ### While
 
 #### While común
@@ -488,7 +498,7 @@ const calcAge2 = function (birthYear) {
 
 > **Característica Clave:** No tienen Hoisting. Te obligan a definir antes de usar (lo cual fomenta un código más ordenado). En JS, **una función es un valor**, igual que un número o un string.
 
-#### C. Arrow Function 
+#### Arrow Function 
 
 Sintaxis moderna, rápida y limpia para funciones.
 

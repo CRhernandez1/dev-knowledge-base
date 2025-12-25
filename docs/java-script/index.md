@@ -547,6 +547,29 @@ Cuando la función tiene más de una instrucción (statement), es obligatorio:
 2. **Objetos (Arrays, Objects):** Se pasa la **referencia (dirección de memoria)**.
 Si modificas una propiedad del objeto dentro de la función, **el objeto original fuera de la función muta**.
 
+### Pure Functions (Funciones Puras) 
+
+Aunque no es un concepto único del lenguaje, es importante tener en cuenta la importancia de mantener nustras funciones "puras". Con el fin de hacer que el código sea predecible y fácil de testear (debug).
+
+**¿Qué quiere decir esto?**
+
+Una función que cumpla estrictamente dos reglas:
+
+- Misma entrada = Misma salida: Si le pasas los mismos argumentos (ej. 2 + 2), siempre debe devolver el mismo resultado (4), sin importar cuántas veces o cuándo la llames.
+
+- Sin "Side Effects" (Efectos secundarios): La función no debe modificar nada fuera de su propio cuerpo (variables globales, estado de la aplicación, el DOM, etc.).
+
+```javascript
+const msg = 'Hola';
+
+function greeting(name) {
+    return `${msg}, ${name}`;
+}
+```
+
+> Ejemplo de Impureza: Si una función greeting(name) usa una variable externa msg = 'Hola' para crear el saludo, es impura. ¿Por qué? Porque si alguien cambia la variable externa msg a "Adiós", la función devolverá algo diferente para el mismo input nombre.
+
+
 ### First-Class vs Higher-Order Functions
 
 JavaScript trata a las funciones como **First-Class Citizens** (Ciudadanos de primera clase). Significa que las funciones son **valores**, igual que un número `5` o un string `'hola'`.
@@ -557,6 +580,8 @@ Es cualquier función que cumple al menos una de estas dos condiciones:
 
 1. **Recibe** una función como argumento (Callback).
 2. **Retorna** una nueva función.
+
+> Concepto callback: Una función que se pasa como argumento a otra función para ser ejecutada ("llamada de vuelta") más tarde dentro de esa función externa.
 
 B. El patrón Callback (Abstracción)
 
@@ -674,3 +699,317 @@ Cuando el motor ve corchetes, sabe que tiene que **evaluar una expresión** prim
 2. Evaluación: *"¿Cuánto vale `key` ahora mismo? Vale 'firstName'"*.
 3. Ejecución final: *"Busca dentro de `jonas` la propiedad 'firstName'"*.
 4. Resultado: `'Jonas'` (Correcto).
+
+## Arrays
+
+Los objetos sirven para almacenar colecciones con claves, pero a menudo necesitamos una colección ordenada (una lista), donde tenemos un primero, un segundo, un tercero, etc. Para eso existen los Arrays.
+
+```javascript
+// Dos sintaxis para crear un array vacío
+let arr = new Array();
+let arr = []; // ✅ La más común
+
+let fruits = ["Manzana", "Naranja", "Ciruela"];
+
+// Acceso por índice (empieza en 0)
+alert( fruits[0] ); // Manzana
+
+// Reemplazar o agregar
+fruits[2] = "Pera"; // Reemplaza Ciruela
+fruits[3] = "Limón"; // Agrega nuevo
+```
+> Nota: Un array puede almacenar elementos de cualquier tipo: strings, números, booleanos, objetos e incluso otros arrays o funciones, todo mezclado en la misma lista.
+
+### Arrays Multidimensionales (Matrices)
+
+Los arrays pueden contener otros arrays.
+
+
+```javascript
+let matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+];
+
+alert( matrix[1][1] );
+```
+
+## Destructuring
+
+Es la forma de "desempaquetar" valores de Arrays u Objetos en variables distintas.
+
+- Arrays
+
+```javascript
+const arr = [2, 3, 4];
+const [x, y, z] = arr; // x=2, y=3, z=4
+
+// Saltar elementos
+const [first, , third] = arr; // first=2, third=4`
+
+// Intercambio de variables
+let jugador1 = "Mando";
+let jugador2 = "Teclado";
+
+// Intercambiamos los valores en una sola línea
+[jugador1, jugador2] = [jugador2, jugador1];
+
+console.log(jugador1); // "Teclado"
+console.log(jugador2); // "Mando"
+```
+
+- Objetos
+
+```javascript
+const usuario = {
+  id: 42,
+  nombre: "Elena",
+  email: "elena@code.com",
+  pais: "España",
+  premium: true
+};
+
+// --- SIN Desestructuración (La forma antigua y repetitiva) ---
+const nombre = usuario.nombre;
+const email = usuario.email;
+const premium = usuario.premium;
+
+// --- CON Desestructuración (La forma moderna) ---
+// Le decimos a JS: "Del objeto usuario, sácame las propiedades nombre, email y premium"
+const { nombre, email, premium } = usuario;
+```
+
+### Valores por Defecto
+
+**El problema:** Imagina que esperas recibir 3 datos de una API, pero solo llegan 2.
+En JS normal, la tercera variable sería `undefined`. Eso puede romper cálculos matemáticos (`undefined + 5 = NaN`).
+
+**La Solución:** Puedes asignar un valor de respaldo ("fallback") en la propia declaración.
+
+
+```javascript
+// Simulamos una respuesta de API incompleta
+const apiResponse = [10, 20];
+
+// Sin defaults: r sería undefined
+// Con defaults:
+const [p, q, r = 1] = apiResponse;
+
+console.log(p, q, r); 
+// Output: 10, 20, 1 (¡Salvado!)`
+```
+
+> Esto es vital cuando lees datos externos que no controlas. Siempre asume que el dato puede no venir.
+
+**En el caso de los objetos**
+
+Sintaxis:
+
+propiedadOriginal: nuevoNombreVariable = valorPorDefecto
+
+```javascript
+const restaurant = {
+  name: 'Pizza Hut',
+  // menu: no existe en este objeto
+};
+
+// Extracción clásica vs Desestructuración
+const {
+  name: restaurantName,  // 1. Toman 'name', lo guardan en 'restaurantName'
+  menu: restaurantMenu = [] // 2. 'menu' no existe, así que usa []
+} = restaurant;
+
+console.log(restaurantName); // 'Pizza Hut'
+console.log(restaurantMenu); // [] (Array vacío, ¡salvados de undefined!)
+```
+
+### Destructuring Anidado
+
+A veces recibes un array dentro de otro array. Para sacarlo, tienes que **mimetizar** la estructura original.
+
+
+```javascript
+const nested = [2, 4, [5, 6]];
+
+// Queremos el 2 (primer nivel) y el 6 (segundo nivel)
+// Fíjate cómo "dibujamos" la estructura dentro del const
+const [i, , [, k]] = nested; 
+
+console.log(i, k); // 2, 6`
+```
+
+- **Análisis:**
+    - `i` toma el `2`.
+    - El primer espacio vacío `,` salta el `4`.
+    - `[, k]` entra al array hijo `[5, 6]`.
+    - La coma dentro del corchete salta el `5`.
+    - `k` toma el `6`.
+
+
+#### Desestructuración Anidada en Objetos
+
+Los objetos JSON suelen tener muchas capas de profundidad. Para sacar un dato profundo, debes imitar la estructura del objeto dentro de las llaves de desestructuración.
+
+
+```javascript
+const restaurant = {
+  openingHours: {
+    fri: { open: 11, close: 23 }
+  }
+};
+
+// Queremos sacar 'open' y 'close' directamente
+const {
+  openingHours: {       // Entramos al primer nivel
+    fri: {              // Entramos al segundo nivel
+       open, close      // Extraemos las variables finales
+    }
+  }
+} = restaurant;
+
+console.log(open, close); // 11, 23
+```
+> Ojo: En este ejemplo, las variables openingHours y fri no se crean. Solo sirven de "camino" para llegar a open y close.
+
+### Mutación de Variables (La Trampa de los Paréntesis)
+
+A veces ya tienes variables creadas y quieres actualizar su valor con datos de un objeto. Aquí JavaScript se confunde.
+
+El problema: Si una línea empieza con {, JavaScript piensa que es un bloque de código (como un if o un bucle), no un objeto.
+
+La solución: Envolver toda la expresión en paréntesis ().
+
+
+```javascript
+let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14 };
+
+// { a, b } = obj;  <-- ❌ Error de sintaxis
+
+({ a, b } = obj); // <-- ✅ Correcto: Los paréntesis indican que es una expresión
+
+console.log(a, b); // 23, 7
+```
+
+## Los Operadores `...` (Spread y Rest)
+
+El mismo símbolo `...` tiene **dos efectos totalmente opuestos** dependiendo de dónde lo coloques respecto al signo igual (`=`).
+
+| Símbolo | Posición respecto a `=` | Nombre | Acción | Analogía |
+|-------|-------------------------|--------|--------|----------|
+| `...` | A la **DERECHA** del `=` | **Spread** | Desempaquetar | Volcar una caja de juguetes al suelo |
+| `...` | A la **IZQUIERDA** del `=` | **Rest** | Empaquetar | Recoger los juguetes del suelo y meterlos en una bolsa |
+
+### Spread Operator
+
+Posición: A la derecha (= ...) o en argumentos de función. Misión: Sacar elementos de una colección (Array/String/Objeto) y ponerlos sueltos en un nuevo contexto.
+
+- A. En Arrays (Inmutabilidad y Copia)
+
+    En algunos frameworks modernos puede ser de mucha utilidad conocer está técnica.
+
+    ```javascript
+    const menu = ['Pizza', 'Pasta'];
+
+    // ❌ Muta el original
+    // menu.push('Risotto');
+
+    // ✅ Crea uno nuevo
+    const newMenu = [...menu, 'Risotto']; 
+    // Resultado: ['Pizza', 'Pasta', 'Risotto']
+    ```
+
+    > Advertencia (Shallow Copy): El Spread hace una copia superficial. Si tu array tiene otros arrays dentro ([[1], [2]]), solo se copian las referencias de los hijos. Si modificas el hijo en la copia, cambias el original.
+
+- B. En Funciones (Pasar argumentos)
+
+    Si tienes los ingredientes en una lista pero la función los pide por separado.
+
+    ```javascript
+    const ingredients = ['Setas', 'Queso'];
+    const cocinar = (ing1, ing2) => console.log(`Cocinado con ${ing1} y ${ing2}`);
+
+    // El spread "saca" los items del array y los pasa como argumentos sueltos
+    cocinar(...ingredients);
+    ```
+- C. En Objetos (El uso más potente) 🌟
+
+    Fundamental para actualizar propiedades sin mutar el objeto original.
+
+    El Patrón "Override" (Sobrescritura): El orden importa. Las propiedades que pongas después del ...spread sobrescriben a las anteriores.
+
+    ```javascript
+
+    const tarea = { id: 1, texto: 'Estudiar JS', completado: false };
+
+    // Queremos cambiar 'completado' a true, manteniendo el resto igual
+    const tareaActualizada = {
+        ...tarea,           // 1. Copia todo (id, texto, completado: false)
+        completado: true    // 2. Sobrescribe 'completado'
+    };
+
+    // ❌ Si lo haces al revés ({ completado: true, ...tarea }), gana el valor antiguo.
+    ```
+
+### Rest Pattern
+
+Posición: A la izquierda (const ... =) o recibiendo argumentos en función. Misión: Agrupar los elementos "sobrantes" en un array o un objeto nuevo.
+
+- A. En Desestructuración de Arrays
+
+    Recoge el "resto" de elementos que no has sacado explícitamente.
+
+    ```javascript
+    const [primero, segundo, ...resto] = [10, 20, 30, 40, 50];
+
+    console.log(primero); // 10
+    console.log(resto);   // [30, 40, 50] (Array con lo que sobró)
+    ```
+
+- B. En Objetos: El "Borrado Inmutable" 🌟
+
+    Cómo eliminar una propiedad sin usar delete (que es lento y muta).
+
+    ```javascript
+    const user = {
+        password: "12345_secret",
+        name: "Juan",
+        email: "juan@mail.com"
+    };
+
+    // Sacamos 'password' a una variable aparte, y guardamos TODO LO DEMÁS en 'userSeguro'
+    const { password, ...userSeguro } = user;
+
+    console.log(userSeguro); 
+    // { name: "Juan", email: "juan@mail.com" } -> ¡Objeto limpio!
+    ```
+- C. En Funciones (Argumentos infinitos)
+
+    Permite que una función reciba cualquier cantidad de parámetros.
+
+    ```javascript
+
+    // Recibe todos los argumentos y los mete en un array real llamado 'numeros'
+    const sumarTodo = function(...numeros) {
+        let total = 0;
+        for (let n of numeros) total += n;
+        return total;
+    };
+    sumarTodo(1, 2, 5, 10); // Funciona con cualquier cantidad
+    ```
+
+    > Regla de Oro: El Rest element (...resto) siempre debe ser el último en la lista de argumentos o desestructuración. JS necesita saber que ahí es donde "termina" y recoge todo lo que sobra.
+
+---
+
+Diferencia Técnica Crítica
+
+Arrays: Son iterables. Puedes usar ... donde quieras.
+
+Objetos: NO son iterables.
+
+✅ { ...obj }: Sí puedes esparcir un objeto dentro de otro objeto.
+
+❌ [ ...obj ]: No puedes esparcir un objeto dentro de un array (Error: object is not iterable).

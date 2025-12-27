@@ -488,22 +488,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#metodos-de-string" class="md-nav__link">
+  <a href="#strings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Métodos de String
+        Strings
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Métodos de String">
+    <nav class="md-nav" aria-label="Strings">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#busqueda-y-comprobacion" class="md-nav__link">
+  <a href="#longitud" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Búsqueda y Comprobación
+        Longitud
       
     </span>
   </a>
@@ -511,10 +511,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#extraccion-y-corte" class="md-nav__link">
+  <a href="#acceso-a-caracteres" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Extracción y Corte
+        Acceso a caracteres
       
     </span>
   </a>
@@ -522,10 +522,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#modificacion" class="md-nav__link">
+  <a href="#capitalizacion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Modificación
+        Capitalización
       
     </span>
   </a>
@@ -533,10 +533,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#caracteres-y-relleno" class="md-nav__link">
+  <a href="#subcadenas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Caracteres y Relleno
+        Subcadenas
       
     </span>
   </a>
@@ -544,21 +544,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#buenas-practicas-modernas" class="md-nav__link">
+  <a href="#compararar-strings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Buenas Prácticas Modernas
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#slice-vs-substring" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Slice vs Substring
+        Compararar strings
       
     </span>
   </a>
@@ -766,22 +755,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#metodos-de-string" class="md-nav__link">
+  <a href="#strings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Métodos de String
+        Strings
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Métodos de String">
+    <nav class="md-nav" aria-label="Strings">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#busqueda-y-comprobacion" class="md-nav__link">
+  <a href="#longitud" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Búsqueda y Comprobación
+        Longitud
       
     </span>
   </a>
@@ -789,10 +778,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#extraccion-y-corte" class="md-nav__link">
+  <a href="#acceso-a-caracteres" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Extracción y Corte
+        Acceso a caracteres
       
     </span>
   </a>
@@ -800,10 +789,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#modificacion" class="md-nav__link">
+  <a href="#capitalizacion" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Modificación
+        Capitalización
       
     </span>
   </a>
@@ -811,10 +800,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#caracteres-y-relleno" class="md-nav__link">
+  <a href="#subcadenas" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Caracteres y Relleno
+        Subcadenas
       
     </span>
   </a>
@@ -822,21 +811,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#buenas-practicas-modernas" class="md-nav__link">
+  <a href="#compararar-strings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Buenas Prácticas Modernas
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#slice-vs-substring" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Slice vs Substring
+        Compararar strings
       
     </span>
   </a>
@@ -892,214 +870,146 @@ Valores que nunca cambian y son necesarios matemáticamente o por configuración
 Ejemplo: <code>Math.PI</code> o <code>Number.MAX_VALUE</code>.</p>
 </li>
 </ol>
-<h2 id="metodos-de-string">Métodos de String<a class="headerlink" href="#metodos-de-string" title="Permanent link">&para;</a></h2>
+<h2 id="strings">Strings<a class="headerlink" href="#strings" title="Permanent link">&para;</a></h2>
 <p>JavaScript proporciona una gran cantidad de métodos para manipular texto.</p>
-<blockquote>
 <p>⚠️ <strong>Inmutabilidad:</strong>
 Recuerda que los Strings en JS son <strong>inmutables</strong>. Ninguno de estos métodos modifica la variable original; todos devuelven un <strong>nuevo string</strong> con los cambios aplicados.</p>
-</blockquote>
-<p>Leyenda de Frecuencia</p>
-<ul>
-<li>🟢 <strong>Esencial:</strong> De uso diario.</li>
-<li>🟡 <strong>Ocasional:</strong> Para casos específicos.</li>
-<li>🔴 <strong>Raro / Legacy:</strong> Existen formas más modernas o mejores de hacerlo.</li>
-</ul>
-<h3 id="busqueda-y-comprobacion">Búsqueda y Comprobación<a class="headerlink" href="#busqueda-y-comprobacion" title="Permanent link">&para;</a></h3>
-<p>Responden preguntas sobre el contenido. Devuelven <code>boolean</code> (true/false) o índices numéricos.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">Uso</th>
-<th style="text-align: left;">Método</th>
-<th style="text-align: left;">Descripción</th>
-<th style="text-align: left;">Ejemplo</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;">🟢</td>
-<td style="text-align: left;"><strong><code>.includes(txt)</code></strong></td>
-<td style="text-align: left;">¿Contiene el texto?</td>
-<td style="text-align: left;"><code>"Hola".includes("o")</code> // <code>true</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">🟢</td>
-<td style="text-align: left;"><strong><code>.startsWith(txt)</code></strong></td>
-<td style="text-align: left;">¿Empieza por...?</td>
-<td style="text-align: left;"><code>"img.jpg".startsWith("img")</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">🟢</td>
-<td style="text-align: left;"><strong><code>.endsWith(txt)</code></strong></td>
-<td style="text-align: left;">¿Termina en...?</td>
-<td style="text-align: left;"><code>"file.js".endsWith(".js")</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">🟡</td>
-<td style="text-align: left;"><strong><code>.indexOf(txt)</code></strong></td>
-<td style="text-align: left;">Posición donde empieza (o <code>-1</code>).</td>
-<td style="text-align: left;"><code>"Hola".indexOf("a")</code> // <code>3</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">🟡</td>
-<td style="text-align: left;"><strong><code>.lastIndexOf(txt)</code></strong></td>
-<td style="text-align: left;">Igual, pero busca desde el final.</td>
-<td style="text-align: left;"><code>"anana".lastIndexOf("a")</code> // <code>4</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">🔴</td>
-<td style="text-align: left;"><strong><code>.search(regex)</code></strong></td>
-<td style="text-align: left;">Busca con Regex. Suele usarse <code>.match</code>.</td>
-<td style="text-align: left;"><code>"Hola".search(/H/)</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="extraccion-y-corte">Extracción y Corte<a class="headerlink" href="#extraccion-y-corte" title="Permanent link">&para;</a></h3>
-<p>Para obtener fragmentos del texto o convertirlo en Arrays.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">Uso</th>
-<th style="text-align: left;">Método</th>
-<th style="text-align: left;">Descripción</th>
-<th style="text-align: left;">Ejemplo</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;">🟢</td>
-<td style="text-align: left;"><strong><code>.slice(ini, fin)</code></strong></td>
-<td style="text-align: left;">Corta un trozo. Admite negativos.</td>
-<td style="text-align: left;"><code>"React".slice(0, 2)</code> // <code>"Re"</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">🟢</td>
-<td style="text-align: left;"><strong><code>.split(sep)</code></strong></td>
-<td style="text-align: left;">Divide el texto en un <strong>Array</strong>.</td>
-<td style="text-align: left;"><code>"a-b".split("-")</code> // <code>['a','b']</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">🔴</td>
-<td style="text-align: left;"><strong><code>.substring(ini, fin)</code></strong></td>
-<td style="text-align: left;">Como slice, pero sin negativos.</td>
-<td style="text-align: left;"><em>Usa <code>.slice()</code> mejor.</em></td>
-</tr>
-<tr>
-<td style="text-align: center;">⛔</td>
-<td style="text-align: left;"><strong><code>.substr()</code></strong></td>
-<td style="text-align: left;"><strong>Obsoleto</strong>. No usar.</td>
-<td style="text-align: left;">--</td>
-</tr>
-</tbody>
-</table>
-<h3 id="modificacion">Modificación<a class="headerlink" href="#modificacion" title="Permanent link">&para;</a></h3>
-<p>Transforman el texto (retornando uno nuevo).</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">Uso</th>
-<th style="text-align: left;">Método</th>
-<th style="text-align: left;">Descripción</th>
-<th style="text-align: left;">Ejemplo</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;">🟢</td>
-<td style="text-align: left;"><strong><code>.replace(a, b)</code></strong></td>
-<td style="text-align: left;">Reemplaza la <strong>primera</strong> coincidencia.</td>
-<td style="text-align: left;"><code>"x x".replace("x", "y")</code> // <code>"y x"</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">🟢</td>
-<td style="text-align: left;"><strong><code>.replaceAll(a, b)</code></strong></td>
-<td style="text-align: left;">Reemplaza <strong>todas</strong> las coincidencias.</td>
-<td style="text-align: left;"><code>"x x".replaceAll("x", "y")</code> // <code>"y y"</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">🟢</td>
-<td style="text-align: left;"><strong><code>.toUpperCase()</code></strong></td>
-<td style="text-align: left;">Convierte a MAYÚSCULAS.</td>
-<td style="text-align: left;"><code>"a".toUpperCase()</code> // <code>"A"</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">🟢</td>
-<td style="text-align: left;"><strong><code>.toLowerCase()</code></strong></td>
-<td style="text-align: left;">Convierte a minúsculas.</td>
-<td style="text-align: left;"><code>"B".toLowerCase()</code> // <code>"b"</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">🟢</td>
-<td style="text-align: left;"><strong><code>.trim()</code></strong></td>
-<td style="text-align: left;">Quita espacios a los lados.</td>
-<td style="text-align: left;"><code>" x ".trim()</code> // <code>"x"</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">🟡</td>
-<td style="text-align: left;"><strong><code>.trimStart()</code></strong></td>
-<td style="text-align: left;">Quita espacios solo del inicio.</td>
-<td style="text-align: left;"><code>" x".trimStart()</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">🟡</td>
-<td style="text-align: left;"><strong><code>.repeat(n)</code></strong></td>
-<td style="text-align: left;">Repite el string <code>n</code> veces.</td>
-<td style="text-align: left;"><code>"Ha".repeat(3)</code> // <code>"HaHaHa"</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">🔴</td>
-<td style="text-align: left;"><strong><code>.concat(str)</code></strong></td>
-<td style="text-align: left;">Une textos.</td>
-<td style="text-align: left;"><em>Usa el operador <code>+</code> o Template Strings.</em></td>
-</tr>
-</tbody>
-</table>
-<h3 id="caracteres-y-relleno">Caracteres y Relleno<a class="headerlink" href="#caracteres-y-relleno" title="Permanent link">&para;</a></h3>
-<p>Manipulación visual o acceso a caracteres.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: center;">Uso</th>
-<th style="text-align: left;">Método</th>
-<th style="text-align: left;">Descripción</th>
-<th style="text-align: left;">Ejemplo</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: center;">🟡</td>
-<td style="text-align: left;"><strong><code>.charAt(i)</code></strong></td>
-<td style="text-align: left;">Letra en la posición <code>i</code>.</td>
-<td style="text-align: left;"><code>"Hola".charAt(0)</code> // <code>"H"</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">🟡</td>
-<td style="text-align: left;"><strong><code>.padStart(len, c)</code></strong></td>
-<td style="text-align: left;">Rellena al inicio.</td>
-<td style="text-align: left;"><code>"5".padStart(2,"0")</code> // <code>"05"</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">🟡</td>
-<td style="text-align: left;"><strong><code>.padEnd(len, c)</code></strong></td>
-<td style="text-align: left;">Rellena al final.</td>
-<td style="text-align: left;"><code>"Hi".padEnd(4,".")</code> // <code>"Hi.."</code></td>
-</tr>
-<tr>
-<td style="text-align: center;">🔴</td>
-<td style="text-align: left;"><strong><code>.charCodeAt(i)</code></strong></td>
-<td style="text-align: left;">Devuelve el código Unicode.</td>
-<td style="text-align: left;"><code>"A".charCodeAt(0)</code> // <code>65</code></td>
-</tr>
-</tbody>
-</table>
 <hr />
-<h3 id="buenas-practicas-modernas">Buenas Prácticas Modernas<a class="headerlink" href="#buenas-practicas-modernas" title="Permanent link">&para;</a></h3>
-<h3 id="slice-vs-substring">Slice vs Substring<a class="headerlink" href="#slice-vs-substring" title="Permanent link">&para;</a></h3>
-<p>Usa siempre <strong><code>.slice()</code></strong>. Es más versátil porque permite índices negativos para contar desde el final (ej: "los últimos 2 caracteres").</p>
-<div class="language-javascript highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;JavaScript&quot;</span><span class="p">;</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">text</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mf">6</span><span class="p">));</span><span class="w"> </span><span class="c1">// &quot;Script&quot;</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1">// .substring(-6) no funcionaría</span>
+<h3 id="longitud">Longitud<a class="headerlink" href="#longitud" title="Permanent link">&para;</a></h3>
+<p><strong>length</strong></p>
+<p><div class="language-javascript highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;hola&#39;</span><span class="p">;</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span><span class="w"> </span><span class="c1">// 4</span>
 </span></code></pre></div>
+Devuelve el número de caracteres de un string.</p>
+<blockquote>
+<p>⚠️ OJO: Es una propiedad, no un método, por lo tanto no se llama con los ()</p>
+</blockquote>
+<h3 id="acceso-a-caracteres">Acceso a caracteres<a class="headerlink" href="#acceso-a-caracteres" title="Permanent link">&para;</a></h3>
+<p>Para obtener un carácter a través de un índice podemos hacerlo de la forma normal con [] o con el método .at()(índices negativos)</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Hola&#39;</span><span class="p">;</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">[</span><span class="mf">0</span><span class="p">]);</span><span class="w"> </span><span class="c1">// H</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1">// [] vs .at()</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">[</span><span class="nx">str</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mf">1</span><span class="p">]);</span><span class="w"> </span><span class="c1">// a</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">at</span><span class="p">(</span><span class="o">-</span><span class="mf">1</span><span class="p">));</span><span class="w"> </span><span class="c1">// a</span>
+</span></code></pre></div>
+<h3 id="capitalizacion">Capitalización<a class="headerlink" href="#capitalizacion" title="Permanent link">&para;</a></h3>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Hola&#39;</span><span class="p">;</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">);</span><span class="w"> </span><span class="c1">// hola</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">);</span><span class="w"> </span><span class="c1">// HOLA</span>
+</span></code></pre></div>
+<h3 id="subcadenas">Subcadenas<a class="headerlink" href="#subcadenas" title="Permanent link">&para;</a></h3>
+<p><strong>str.indexOf</strong>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">frase</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;El gato persigue al ratón y el gato juega.&quot;</span><span class="p">;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1">// 1. Búsqueda básica</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1">// Encuentra la primera vez que aparece &quot;gato&quot;</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="kd">const</span><span class="w"> </span><span class="nx">primeraPosicion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">frase</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;gato&quot;</span><span class="p">);</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">primeraPosicion</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1">// Salida: 3 (Recuerda: los índices empiezan a contar en 0: E-0, l-1, [espacio]-2, g-3)</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c1">// 2. Cuando el texto NO existe</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1">// Si no lo encuentra, siempre devuelve -1</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="kd">const</span><span class="w"> </span><span class="nx">noEncontrado</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">frase</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;perro&quot;</span><span class="p">);</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">noEncontrado</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="c1">// Salida: -1</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="c1">// 3. Case Sensitive (Distingue mayúsculas)</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="c1">// &quot;Gato&quot; con mayúscula no es lo mismo que &quot;gato&quot;</span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="kd">const</span><span class="w"> </span><span class="nx">mayuscula</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">frase</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;Gato&quot;</span><span class="p">);</span>
+</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">mayuscula</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="c1">// Salida: -1</span>
+</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>
+</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>
+</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="c1">// 4. Usando el segundo parámetro (fromIndex)</span>
+</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="c1">// Le decimos: &quot;Empieza a buscar a partir del índice 10&quot;</span>
+</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="c1">// Así saltamos el primer &quot;gato&quot; y encontramos el segundo</span>
+</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="kd">const</span><span class="w"> </span><span class="nx">segundaPosicion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">frase</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s2">&quot;gato&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">10</span><span class="p">);</span>
+</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">segundaPosicion</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="c1">// Salida: 31 (La posición del segundo &quot;gato&quot;)</span>
+</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>
+</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="c1">// 5. Comprobación en condiciones </span>
+</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">frese</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="s1">&#39;El&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Existe&#39;</span><span class="p">);</span>
+</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="p">}</span>
+</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="c1">// debemos realizarlo así ya que en casos como este que la subcadena</span>
+</span><span id="__span-3-36"><a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="c1">// comienza en cero, no entraría por el if correctamente.</span>
+</span></code></pre></div></p>
+<p><strong>includes, startsWith, endsWith</strong></p>
+<p><div class="language-javascript highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">texto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Curso de JavaScript&quot;</span><span class="p">;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1">// 1. includes() -&gt; ¿Contiene este texto en cualquier parte?</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">texto</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s2">&quot;JavaScript&quot;</span><span class="p">));</span><span class="w"> </span><span class="c1">// true</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">texto</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s2">&quot;Python&quot;</span><span class="p">));</span><span class="w">     </span><span class="c1">// false</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1">// 2. startsWith() -&gt; ¿Empieza exactamente con esto?</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">texto</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s2">&quot;Curso&quot;</span><span class="p">));</span><span class="w">    </span><span class="c1">// true</span>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">texto</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="s2">&quot;curso&quot;</span><span class="p">));</span><span class="w">    </span><span class="c1">// false </span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="c1">// 3. endsWith() -&gt; ¿Termina exactamente con esto?</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">texto</span><span class="p">.</span><span class="nx">endsWith</span><span class="p">(</span><span class="s2">&quot;Script&quot;</span><span class="p">));</span><span class="w">     </span><span class="c1">// true</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">texto</span><span class="p">.</span><span class="nx">endsWith</span><span class="p">(</span><span class="s2">&quot;Java&quot;</span><span class="p">));</span>
+</span></code></pre></div>
+<strong>substring y slice</strong></p>
+<p>Ambos sirven para extraer una parte del string sin modificar el original. Funcionan casi igual (inicio, fin), pero tienen diferencias clave en los casos "raros".</p>
+<p>El parámetro fin es exclusivo (no se incluye el carácter de esa posición).</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;JavaScript&quot;</span><span class="p">;</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1">// 1. Uso Básico (Idénticos)</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1">// Extraer desde índice 0 hasta el 4 (sin incluir el 4)</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">));</span><span class="w">      </span><span class="c1">// &quot;Java&quot;</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">4</span><span class="p">));</span><span class="w">  </span><span class="c1">// &quot;Java&quot;</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">4</span><span class="p">))</span><span class="w"> </span><span class="c1">// desde el 4 hacia adelante</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="nx">str</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mf">4</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">1</span><span class="p">)</span><span class="w"> </span><span class="c1">// rip, slice permite negativos</span>
+</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Método</th>
+<th>Selecciona…</th>
+<th>Negativos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>slice(comienzo, final)</code></td>
+<td>Desde <code>comienzo</code> hasta <code>final</code> (sin incluir <code>final</code>)</td>
+<td>Permite negativos</td>
+</tr>
+<tr>
+<td><code>substring(comienzo, final)</code></td>
+<td>Entre <code>comienzo</code> y <code>final</code> (no incluye <code>final</code>)</td>
+<td>Valores negativos se tratan como <code>0</code></td>
+</tr>
+</tbody>
+</table>
+<p>Lo recomendable es usar slice.</p>
+<h3 id="compararar-strings">Compararar strings<a class="headerlink" href="#compararar-strings" title="Permanent link">&para;</a></h3>
+<p>Los strings en JavaScript son codificados usando UTF-16. Por lo que cuando ordenamos se basan en esto.</p>
+<p><strong>str.codePointAt(pos)</strong></p>
+<p>Devuelve un número decimal que representa el código de carácter en la posición pos</p>
+<p><strong>String.fromCodePoint(code)</strong></p>
+<p>Crea un carácter por su código numérico</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="s1">&#39;z&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// faslse</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">.</span><span class="nx">codePointAt</span><span class="p">(</span><span class="mf">0</span><span class="p">));</span><span class="w"> </span><span class="c1">// 122</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">String</span><span class="p">.</span><span class="nx">fromCodePoint</span><span class="p">(</span><span class="mf">90</span><span class="p">));</span><span class="w"> </span><span class="c1">// Z</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">String</span><span class="p">.</span><span class="nx">fromCodePoint</span><span class="p">(</span><span class="mh">0x5a</span><span class="p">));</span><span class="w"> </span><span class="c1">// Se puede pasar en hexadecimal también</span>
+</span></code></pre></div>
+<p>Comparar strings correctamente es complejo porque <strong>cada idioma tiene su propio alfabeto y reglas</strong>. Letras que parecen iguales pueden ocupar <strong>posiciones distintas</strong> según el lenguaje.</p>
+<p>Para resolver esto, los navegadores modernos implementan el estándar <strong>ECMA 402</strong>, que permite comparaciones internacionalizadas.</p>
+<p><code>str.localeCompare(str2)</code>
+Este método compara dos strings según las reglas del idioma y devuelve:</p>
+<ul>
+<li><code>1</code> → <code>str</code> es mayor que <code>str2</code></li>
+<li><code>-1</code> → <code>str</code> es menor que <code>str2</code></li>
+<li><code>0</code> → ambos strings son equivalentes</li>
+</ul>
 
 
 

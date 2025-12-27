@@ -30,77 +30,163 @@ Ejemplo: `Number("10")` convierte un string a número.
 Valores que nunca cambian y son necesarios matemáticamente o por configuración.
 Ejemplo: `Math.PI` o `Number.MAX_VALUE`.
 
-## Métodos de String
+## Strings
 
 JavaScript proporciona una gran cantidad de métodos para manipular texto.
 
-> ⚠️ **Inmutabilidad:**
-> Recuerda que los Strings en JS son **inmutables**. Ninguno de estos métodos modifica la variable original; todos devuelven un **nuevo string** con los cambios aplicados.
-
-
-Leyenda de Frecuencia
-
-- 🟢 **Esencial:** De uso diario.
-- 🟡 **Ocasional:** Para casos específicos.
-- 🔴 **Raro / Legacy:** Existen formas más modernas o mejores de hacerlo.
-
-
-### Búsqueda y Comprobación
-Responden preguntas sobre el contenido. Devuelven `boolean` (true/false) o índices numéricos.
-
-| Uso | Método | Descripción | Ejemplo |
-| :---: | :--- | :--- | :--- |
-| 🟢 | **`.includes(txt)`** | ¿Contiene el texto? | `"Hola".includes("o")` // `true` |
-| 🟢 | **`.startsWith(txt)`** | ¿Empieza por...? | `"img.jpg".startsWith("img")` |
-| 🟢 | **`.endsWith(txt)`** | ¿Termina en...? | `"file.js".endsWith(".js")` |
-| 🟡 | **`.indexOf(txt)`** | Posición donde empieza (o `-1`). | `"Hola".indexOf("a")` // `3` |
-| 🟡 | **`.lastIndexOf(txt)`** | Igual, pero busca desde el final. | `"anana".lastIndexOf("a")` // `4` |
-| 🔴 | **`.search(regex)`** | Busca con Regex. Suele usarse `.match`. | `"Hola".search(/H/)` |
-
-### Extracción y Corte
-Para obtener fragmentos del texto o convertirlo en Arrays.
-
-| Uso | Método | Descripción | Ejemplo |
-| :---: | :--- | :--- | :--- |
-| 🟢 | **`.slice(ini, fin)`** | Corta un trozo. Admite negativos. | `"React".slice(0, 2)` // `"Re"` |
-| 🟢 | **`.split(sep)`** | Divide el texto en un **Array**. | `"a-b".split("-")` // `['a','b']` |
-| 🔴 | **`.substring(ini, fin)`** | Como slice, pero sin negativos. | *Usa `.slice()` mejor.* |
-| ⛔ | **`.substr()`** | **Obsoleto**. No usar. | -- |
-
-### Modificación
-Transforman el texto (retornando uno nuevo).
-
-| Uso | Método | Descripción | Ejemplo |
-| :---: | :--- | :--- | :--- |
-| 🟢 | **`.replace(a, b)`** | Reemplaza la **primera** coincidencia. | `"x x".replace("x", "y")` // `"y x"` |
-| 🟢 | **`.replaceAll(a, b)`** | Reemplaza **todas** las coincidencias. | `"x x".replaceAll("x", "y")` // `"y y"` |
-| 🟢 | **`.toUpperCase()`** | Convierte a MAYÚSCULAS. | `"a".toUpperCase()` // `"A"` |
-| 🟢 | **`.toLowerCase()`** | Convierte a minúsculas. | `"B".toLowerCase()` // `"b"` |
-| 🟢 | **`.trim()`** | Quita espacios a los lados. | `" x ".trim()` // `"x"` |
-| 🟡 | **`.trimStart()`** | Quita espacios solo del inicio. | `" x".trimStart()` |
-| 🟡 | **`.repeat(n)`** | Repite el string `n` veces. | `"Ha".repeat(3)` // `"HaHaHa"` |
-| 🔴 | **`.concat(str)`** | Une textos. | *Usa el operador `+` o Template Strings.* |
-
-### Caracteres y Relleno
-Manipulación visual o acceso a caracteres.
-
-| Uso | Método | Descripción | Ejemplo |
-| :---: | :--- | :--- | :--- |
-| 🟡 | **`.charAt(i)`** | Letra en la posición `i`. | `"Hola".charAt(0)` // `"H"` |
-| 🟡 | **`.padStart(len, c)`** | Rellena al inicio. | `"5".padStart(2,"0")` // `"05"` |
-| 🟡 | **`.padEnd(len, c)`** | Rellena al final. | `"Hi".padEnd(4,".")` // `"Hi.."` |
-| 🔴 | **`.charCodeAt(i)`** | Devuelve el código Unicode. | `"A".charCodeAt(0)` // `65` |
+⚠️ **Inmutabilidad:**
+Recuerda que los Strings en JS son **inmutables**. Ninguno de estos métodos modifica la variable original; todos devuelven un **nuevo string** con los cambios aplicados.
 
 ---
+### Longitud
 
-### Buenas Prácticas Modernas
-
-### Slice vs Substring
-Usa siempre **`.slice()`**. Es más versátil porque permite índices negativos para contar desde el final (ej: "los últimos 2 caracteres").
+**length**
 
 ```javascript
-const text = "JavaScript";
-console.log(text.slice(-6)); // "Script"
-// .substring(-6) no funcionaría
+const str = 'hola';
+console.log(str.length); // 4
 ```
+Devuelve el número de caracteres de un string.
+> ⚠️ OJO: Es una propiedad, no un método, por lo tanto no se llama con los ()
+
+### Acceso a caracteres
+
+Para obtener un carácter a través de un índice podemos hacerlo de la forma normal con [] o con el método .at()(índices negativos)
+
+```javascript
+const str = 'Hola';
+console.log(str[0]); // H
+// [] vs .at()
+console.log(str[str.length - 1]); // a
+console.log(str.at(-1)); // a
+```
+
+### Capitalización
+
+```javascript
+const str = 'Hola';
+console.log(str.toLowerCase); // hola
+console.log(str.toUpperCase); // HOLA
+```
+
+### Subcadenas
+
+**str.indexOf**
+```javascript
+const frase = "El gato persigue al ratón y el gato juega.";
+
+// 1. Búsqueda básica
+// Encuentra la primera vez que aparece "gato"
+const primeraPosicion = frase.indexOf("gato");
+console.log(primeraPosicion); 
+// Salida: 3 (Recuerda: los índices empiezan a contar en 0: E-0, l-1, [espacio]-2, g-3)
+
+
+// 2. Cuando el texto NO existe
+// Si no lo encuentra, siempre devuelve -1
+const noEncontrado = frase.indexOf("perro");
+console.log(noEncontrado); 
+// Salida: -1
+
+
+// 3. Case Sensitive (Distingue mayúsculas)
+// "Gato" con mayúscula no es lo mismo que "gato"
+const mayuscula = frase.indexOf("Gato");
+console.log(mayuscula); 
+// Salida: -1
+
+
+// 4. Usando el segundo parámetro (fromIndex)
+// Le decimos: "Empieza a buscar a partir del índice 10"
+// Así saltamos el primer "gato" y encontramos el segundo
+const segundaPosicion = frase.indexOf("gato", 10);
+console.log(segundaPosicion); 
+// Salida: 31 (La posición del segundo "gato")
+
+// 5. Comprobación en condiciones 
+if (frese.indexOf('El') != -1) {
+    console.log('Existe');
+}
+// debemos realizarlo así ya que en casos como este que la subcadena
+// comienza en cero, no entraría por el if correctamente.
+```
+
+**includes, startsWith, endsWith**
+
+```javascript
+const texto = "Curso de JavaScript";
+
+// 1. includes() -> ¿Contiene este texto en cualquier parte?
+console.log(texto.includes("JavaScript")); // true
+console.log(texto.includes("Python"));     // false
+
+
+// 2. startsWith() -> ¿Empieza exactamente con esto?
+console.log(texto.startsWith("Curso"));    // true
+console.log(texto.startsWith("curso"));    // false 
+
+
+// 3. endsWith() -> ¿Termina exactamente con esto?
+console.log(texto.endsWith("Script"));     // true
+console.log(texto.endsWith("Java"));
+```
+**substring y slice**
+
+Ambos sirven para extraer una parte del string sin modificar el original. Funcionan casi igual (inicio, fin), pero tienen diferencias clave en los casos "raros".
+
+El parámetro fin es exclusivo (no se incluye el carácter de esa posición).
+
+
+```js
+const str = "JavaScript";
+
+// 1. Uso Básico (Idénticos)
+// Extraer desde índice 0 hasta el 4 (sin incluir el 4)
+console.log(str.slice(0, 4));      // "Java"
+console.log(str.substring(0, 4));  // "Java"
+
+console.log(str.slice(4)) // desde el 4 hacia adelante
+str.slice(-4, -1) // rip, slice permite negativos
+```
+
+| Método                          | Selecciona…                                              | Negativos |
+|---------------------------------|----------------------------------------------------------|-----------|
+| `slice(comienzo, final)`        | Desde `comienzo` hasta `final` (sin incluir `final`)     | Permite negativos |
+| `substring(comienzo, final)`    | Entre `comienzo` y `final` (no incluye `final`)          | Valores negativos se tratan como `0` |
+
+Lo recomendable es usar slice.
+
+### Compararar strings
+
+Los strings en JavaScript son codificados usando UTF-16. Por lo que cuando ordenamos se basan en esto.
+
+**str.codePointAt(pos)**
+
+Devuelve un número decimal que representa el código de carácter en la posición pos
+
+**String.fromCodePoint(code)**
+
+Crea un carácter por su código numérico
+
+```js
+console.log('a' > 'z'); // faslse
+
+console.log("z".codePointAt(0)); // 122
+
+console.log(String.fromCodePoint(90)); // Z
+console.log(String.fromCodePoint(0x5a)); // Se puede pasar en hexadecimal también
+```
+
+Comparar strings correctamente es complejo porque **cada idioma tiene su propio alfabeto y reglas**. Letras que parecen iguales pueden ocupar **posiciones distintas** según el lenguaje.
+
+Para resolver esto, los navegadores modernos implementan el estándar **ECMA 402**, que permite comparaciones internacionalizadas.
+
+`str.localeCompare(str2)`
+Este método compara dos strings según las reglas del idioma y devuelve:
+
+- `1` → `str` es mayor que `str2`
+- `-1` → `str` es menor que `str2`
+- `0` → ambos strings son equivalentes
+
+
 

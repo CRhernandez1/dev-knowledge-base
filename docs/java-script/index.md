@@ -74,7 +74,7 @@ En JavaScript, hay 3 tipos de comillas.
 
 Las comillas dobles y simples son comillas “sencillas” (es decir, funcionan igual). No hay diferencia entre ellas en JavaScript. Queda a elección del programador cual usar, pero por lo general se recomiendan las simples.
 
-Los backticks son comillas de interpolación. Nos permiten inyectar variables y expresiones en una cadena de caracteres encerrándolas en ${...}, por ejemplo:
+Los backticks son comillas de interpolación. Nos permiten inyectar variables y expresiones en una cadena de caracteres encerrándolas en ${...}. Además de hacer strings multilínea.
 
 ```javascript
 const fistName = 'Cristian';
@@ -475,7 +475,7 @@ do {
 
 ### Tipos principales
 
-#### Tradicional
+#### Function Declaration
 
 ```javascript
 function calcAge1(birthYear) {

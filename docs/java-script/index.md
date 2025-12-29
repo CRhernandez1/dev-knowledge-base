@@ -619,6 +619,62 @@ Un patrón antiguo pero que verás en código legacy. Sirve para ejecutar una fu
 
 - **Hoy en día:** Simplemente usamos un bloque `{ const isPrivate = 23; }` para privacidad.
 
+### Recursion
+
+El clásico. Calcular el factorial de un número (ej. `3! = 3 * 2 * 1`).
+
+```javascript
+function factorial(n) {
+    // 1. Caso Base (El freno de emergencia)
+    // Si no ponemos esto, la Call Stack explota (Stack Overflow)
+    if (n === 0) {
+        return 1;
+    }
+
+    // 2. Llamada Recursiva
+    // Se pausa este contexto y se crea uno nuevo encima
+    return n * factorial(n - 1);
+}
+
+console.log(factorial(3)); // Resultado: 6
+```
+
+¿Qué pasa en el Motor (Call Stack)?
+
+Imagina la pila de llamadas creciendo y luego bajando.
+
+Fase de Apilado (Ejecución):
+
+1. GEC: Llama a factorial(3).
+
+2. FEC factorial(3): n=3. ¿Es 0? No. Retorna 3 * ¿...?.
+
+    Pausa y llama a factorial(2).
+
+3. FEC factorial(2): n=2. ¿Es 0? No. Retorna 2 * ¿...?.
+
+    Pausa y llama a factorial(1).
+
+4. FEC factorial(1): n=1. ¿Es 0? No. Retorna 1 * ¿...?.
+
+    Pausa y llama a factorial(0).
+
+5. FEC factorial(0): n=0. ¡CASO BASE! Retorna 1.
+    
+**Fase de Desapilado (Resolución):**
+
+* factorial(0) retorna 1 y sale del stack.
+
+* factorial(1) recibe el 1. Calcula 1 * 1 = 1. Sale del stack.
+
+* factorial(2) recibe el 1. Calcula 2 * 1 = 2. Sale del stack.
+
+* factorial(3) recibe el 2. Calcula 3 * 2 = 6. Sale del stack.
+
+* GEC recibe 6 e imprime.
+
+> El significado de GEC Y FEC se explica con detalle en los fundamentos teóricos
+
 ## Objetos 
 
 A diferencia de los datos "primitivos" (que solo guardan un valor único), los objetos permiten almacenar colecciones de datos y entidades más complejas. Son fundamentales en JavaScript.

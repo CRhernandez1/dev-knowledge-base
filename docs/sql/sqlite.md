@@ -503,3 +503,257 @@ FROM ratings
 GROUP BY book_id 
 HAVING AVG(rating) > 4.0;
 ```
+
+## Diseño de Bases de Datos Relacionales
+
+El diseño de bases de datos es el proceso de definir la estructura lógica (el "plano" o *schema*) que organizará los datos. El objetivo es asegurar la integridad, reducir la redundancia y facilitar el acceso a la información.
+
+### Normalización de Datos
+
+La normalización es el proceso de organizar los datos en tablas para minimizar la redundancia y evitar anomalías en la inserción, actualización o borrado de datos.
+
+#### El Problema de la Tabla Única (Desnormalización)
+Almacenar toda la información en una sola tabla provoca duplicidad de datos y dificulta el mantenimiento.
+
+**Ejemplo de mal diseño (Sistema de Metro):**
+Imagina una tabla única `movimientos_metro` que registra cada vez que alguien pasa una tarjeta.
+
+| Pasajero | Estación | Línea | Acción | Saldo |
+| :--- | :--- | :--- | :--- | :--- |
+| Juan Pérez | Central | Roja | Entrar | 2.50 |
+| Ana Gómez | Norte | Verde | Salir | 5.00 |
+| Juan Pérez | Sur | Azul | Entrar | 1.00 |
+
+* **Redundancia:** El nombre "Juan Pérez" se repite. Si Juan cambia su nombre, hay que actualizar múltiples filas.
+
+* **Ambigüedad:** Si hay dos "Juan Pérez", no podemos distinguirlos.
+
+* **Ineficiencia:** Guardamos el nombre de la línea ("Roja") cada vez que alguien entra en la estación "Central", gastando espacio innecesariamente.
+
+#### La Solución: Entidades y Relaciones
+Separamos los conceptos en **Entidades** (tablas propias):
+
+1.  **Pasajeros (Riders):** Información única de la persona.
+
+2.  **Estaciones (Stations):** Información única del lugar.
+
+3.  **Transacciones (Visits/Swipes):** El evento que conecta a ambos.
+
+---
+
+### Tipos de Datos en SQLite: Clases y Afinidades
+
+SQLite es único porque utiliza un sistema de **Tipado Dinámico**. A diferencia de otros motores SQL (como PostgreSQL o MySQL) donde el tipo de dato se fija rígidamente en la columna, SQLite se fija en el valor en sí mismo, utilizando dos conceptos clave:
+
+#### A. Clases de Almacenamiento (Storage Classes)
+Es cómo se guardan físicamente los datos en el disco duro. SQLite solo tiene 5 clases fundamentales:
+
+1.  **NULL:** Representa la ausencia de valor.
+2.  **INTEGER:** Números enteros con signo (1, 2, -50). Se usan para IDs, contadores o cantidades exactas. Ocupan 1, 2, 3, 4, 6, u 8 bytes dependiendo de la magnitud.
+3.  **REAL:** Números de punto flotante IEEE (decimales como 3.14, -0.01). Se usan para mediciones físicas.
+4.  **TEXT:** Cadenas de caracteres (UTF-8, UTF-16). Nombres, descripciones.
+5.  **BLOB (Binary Large Object):** Datos binarios almacenados tal cual se introducen (imágenes, archivos, audio).
+
+#### B. Afinidades de Tipo (Type Affinity)
+Cuando creas una tabla (`CREATE TABLE`), defines un tipo para la columna. SQLite mapea ese tipo declarado a una de las 5 "Afinidades". La afinidad es la **preferencia** de la columna sobre cómo guardar el dato.
+
+Las 5 Afinidades son:
+
+1.  **TEXT:** Preferida para columnas declaradas como `VARCHAR`, `TEXT`, `CLOB`.
+    * *Comportamiento:* Si intentas guardar un número, lo convierte a texto.
+2.  **NUMERIC:** Preferida para columnas declaradas como `NUMERIC`, `DECIMAL`, `DATE`.
+    * *Comportamiento:* Intenta convertir texto a INTEGER o REAL si es posible. Si insertas `'10.5'`, lo guarda como número `10.5`. Si insertas `'hola'`, lo guarda como texto.
+3.  **INTEGER:** Preferida para columnas declaradas como `INT`, `INTEGER`, `BIGINT`.
+    * *Comportamiento:* Se comporta como NUMERIC, pero si el número tiene decimales y cabe en un entero (ej: `10.0`), lo convierte a entero (`10`).
+4.  **REAL:** Preferida para columnas declaradas como `REAL`, `DOUBLE`, `FLOAT`.
+    * *Comportamiento:* Fuerza la conversión a punto flotante.
+5.  **BLOB:** Preferida para columnas declaradas como `BLOB` o si no se especifica tipo.
+    * *Comportamiento:* No intenta convertir nada. Guarda el dato tal cual llega.
+
+**Ejemplo de Conversión (Coerción de Tipos):**
+
+* Si tienes una columna con afinidad **INTEGER**.
+
+* Insertas el texto `'150'`.
+
+* SQLite detecta que parece un número -> Lo convierte y lo guarda como el número `150` (Clase INTEGER).
+
+* Si insertas `'Cien'`, no puede convertirlo -> Lo guarda como `'Cien'` (Clase TEXT).
+
+> **Consejo Pro:** Para datos monetarios, se recomienda usar **INTEGER** (almacenando centavos) en lugar de **REAL** para evitar errores de redondeo de punto flotante.
+
+---
+
+### Data Definition Language (DDL)
+
+DDL son los comandos SQL utilizados para definir y modificar la estructura de la base de datos.
+
+#### Crear Tablas (CREATE TABLE)
+Define el nombre de la tabla, sus columnas y los tipos de datos preferidos.
+
+```sql
+CREATE TABLE riders (
+    id INTEGER,
+    name TEXT
+);
+```
+
+#### Modificar Tablas (ALTER TABLE)
+
+Permite cambiar la estructura de una tabla existente sin perder sus datos.
+```sql
+
+-- Renombrar tabla:
+
+ALTER TABLE riders RENAME TO passengers;
+
+--Añadir columna:
+
+ALTER TABLE passengers ADD COLUMN email TEXT;
+
+--Renombrar columna:
+
+ALTER TABLE passengers RENAME COLUMN name TO full_name;
+
+--Eliminar columna:
+
+ALTER TABLE passengers DROP COLUMN email;
+```
+
+#### Eliminar tabla (DROP TABLE)
+
+Eliminar Tablas (DROP TABLE)
+Borra la tabla y todos sus datos permanentemente.
+
+```sql
+DROP TABLE passengers;
+```
+
+## Restricciones de Integridad (Constraints)
+
+Las restricciones son reglas que la base de datos impone para garantizar la validez, precisión y consistencia de los datos.
+
+### Restricciones de Tabla (Identidad y Relación)
+
+**PRIMARY KEY (Clave Primaria):**
+
+  * Columna (o grupo de columnas) que identifica de forma **única** a cada fila de la tabla.
+
+  * Implica `UNIQUE` y `NOT NULL`.
+
+  * Es la base para buscar registros rápidamente.
+
+  * **Convención:** Usar una columna `id INTEGER PRIMARY KEY`.
+
+**FOREIGN KEY (Clave Foránea):**
+
+  * Columna que crea un vínculo con la `PRIMARY KEY` de otra tabla.
+
+  * Garantiza la **Integridad Referencial**: no puedes tener una transacción de una tarjeta que no existe en la tabla de tarjetas.
+
+### Restricciones de Columna (Reglas de Datos)
+
+**NOT NULL:**
+
+  * Prohíbe que el valor sea nulo. Obligatorio tener dato.
+
+  * *Ejemplo:* Una estación debe tener nombre.
+
+**UNIQUE:**
+
+  * Asegura que todos los valores de la columna sean diferentes entre sí.
+
+  * *Ejemplo:* No pueden existir dos tarjetas con el mismo número de serie.
+
+**DEFAULT:**
+
+  * Asigna un valor predeterminado si no se especifica uno al insertar.
+
+  * *Ejemplo:* `DEFAULT CURRENT_TIMESTAMP` para guardar la hora exacta del registro automáticamente.
+
+**CHECK:**
+
+  * Permite definir una condición lógica personalizada que debe cumplirse. Es muy potente para validar reglas de negocio.
+
+  * *Ejemplo:* El saldo no puede ser negativo (`amount >= 0`).
+
+  * *Ejemplo:* El tipo de transacción solo puede ser uno de una lista (`IN ('enter', 'exit')`).
+
+
+## Ejemplo Práctico de Diseño Completo
+
+(Caso: Tarjeta de Transporte)
+
+A continuación, un esquema robusto que aplica todos los conceptos anteriores para un sistema de tarjetas de metro (como la "CharlieCard").
+
+* Entidad 1: Tarjetas (Cards)
+Identificamos a los usuarios por su tarjeta, no por su nombre (anonimato/seguridad).
+
+```sql
+CREATE TABLE cards (
+    id INTEGER PRIMARY KEY
+);
+```
+
+* Entidad 2: Estaciones (Stations)
+Catálogo de lugares. El nombre debe ser único para evitar confusiones.
+
+```sql
+CREATE TABLE stations (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL UNIQUE,
+    line TEXT NOT NULL
+);
+```
+
++ Entidad 3: Transacciones (Swipes) - La tabla "Asociativa"
+Esta tabla conecta Tarjetas con Estaciones y registra eventos. Implementa múltiples restricciones para asegurar la calidad del dato.
+
+```sql
+CREATE TABLE swipes (
+    id INTEGER PRIMARY KEY,
+    
+    -- Claves Foráneas: Conexión con las otras tablas
+    card_id INTEGER,
+    station_id INTEGER,
+    
+    -- Tipo de transacción validada con CHECK
+    type TEXT NOT NULL CHECK(type IN ('enter', 'exit', 'deposit')),
+    
+    -- Fecha y hora automática
+    datetime NUMERIC NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    
+    -- Dinero manejado (no permitimos transacciones de valor 0)
+    amount NUMERIC NOT NULL CHECK(amount != 0),
+    
+    -- Definición explícita de las relaciones
+    FOREIGN KEY(card_id) REFERENCES cards(id),
+    FOREIGN KEY(station_id) REFERENCES stations(id)
+);
+```
+
+## Modelado de Relaciones
+
+Al diseñar, debemos identificar cómo interactúan las entidades:
+
+**Uno a Uno (1:1):**
+
+  * Una fila en la tabla A corresponde a una única fila en la tabla B.
+
+  * *Nota:* Es poco común; normalmente si tienen relación 1:1 se suelen unir los datos en una sola tabla.
+
+**Uno a Muchos (1:M):**
+
+  * Una fila en la tabla A se relaciona con muchas filas en la tabla B.
+
+  * *Ejemplo:* Una **Línea** de metro tiene muchas **Estaciones**.
+
+  * *Implementación:* La `FOREIGN KEY` se coloca en la tabla del lado "Muchos" (la estación tendría una columna `line_id`).
+
+**Muchos a Muchos (M:N):**
+
+  * Muchas filas en la tabla A se relacionan con muchas filas en la tabla B.
+
+  * *Ejemplo:* Un **Pasajero** visita muchas **Estaciones**, y una **Estación** recibe muchos **Pasajeros**.
+
+  * *Implementación:* Se requiere crear una **Tabla Intermedia** (como la tabla `swipes` del ejemplo anterior) que contenga las claves foráneas de ambas entidades para unirlas.

@@ -242,7 +242,7 @@ Devuelve el **primer valor TRUTHY** que encuentre. Si todos son falsos, devuelve
 const guests1 = restaurant.numGuests || 10;
 ```
 
-- ⚠️ **Bug:** Si `numGuests` es `0` (un número válido de invitados), JS lo toma como falsy y pone 10. **Error lógico grave**. Para esto fue diseñado el operador nullish explicado anteriormente.
+- ⚠️ **Bug:** Si `numGuests` es `0` (un número válido de guests), JS lo toma como falsy y pone 10. **Error lógico grave**. Para esto fue diseñado el operador nullish explicado anteriormente.
 
 ### AND (`&&`)
 
@@ -1069,3 +1069,86 @@ Objetos: NO son iterables.
 ✅ { ...obj }: Sí puedes esparcir un objeto dentro de otro objeto.
 
 ❌ [ ...obj ]: No puedes esparcir un objeto dentro de un array (Error: object is not iterable).
+
+## Mapas y Sets
+
+### Map
+
+Un Map es una colección de pares clave-valor.
+
+A primera vista parece un Objeto ({}), pero tiene diferencias fundamentales que lo hacen superior para guardar diccionarios de datos o cachés.
+
+Diferencias Clave con los Objetos:
+
+* Claves de cualquier tipo: En un Objeto, las claves solo pueden ser Strings o Symbols. En un Map, la clave puede ser lo que quieras: un número, un booleano, o incluso otro objeto o una función.
+
+* Orden garantizado: El Map recuerda el orden original de inserción. Los objetos no siempre garantizan esto.
+
+* Tamaño directo: Tienen una propiedad .size. (En un objeto tienes que contar las claves manualmente).
+
+```js
+
+// Crear un Map
+const mapObject = new Map();
+
+// 1. set(clave, valor): Guardar datos
+mapObject.set('nombre', 'Eduardo');
+mapObject.set(1, 'numero uno'); // Clave numérica
+mapObject.set(true, 'booleano'); // Clave booleana
+
+const objClave = { id: 1 };
+mapObject.set(objClave, 'Objeto como clave'); // ¡Esto es imposible en un objeto normal!
+
+// 2. get(clave): Obtener datos
+console.log(mapObject.get(1)); // "numero uno"
+console.log(mapObject.get(objClave)); // "Objeto como clave"
+
+// 3. has(clave): ¿Existe?
+console.log(mapObject.has('nombre')); // true
+
+// 4. delete(clave) y clear()
+mapObject.delete(true); // Borra uno
+mapObject.clear();      // Borra todo
+
+// 5. Tamaño
+console.log(mapObject.size);
+```
+
+### Set
+
+Un Set es una estructura de datos que almacena una colección de valores donde cada valor puede aparecer una sola vez. Si intentas meter un duplicado, el Set simplemente lo ignora.
+
+A diferencia de un Array, no tiene índices (no existe set[0]).
+
+⚡ El Secreto de su Velocidad: El Hashing
+La gran diferencia técnica con un Array es cómo guarda los datos internamente. Los Sets utilizan una Tabla Hash.
+
+1. ¿Qué es el Hash? Cuando guardas un dato (ej. "Hola"), el motor de JS aplica una fórmula matemática para generar un código único (hash) que sirve como dirección de memoria directa.
+
+2. La Diferencia:
+
+    * En un Array (includes): El motor tiene que recorrer la lista elemento por elemento hasta encontrarlo (Lento si hay millones de datos).
+
+    * En un Set (has): El motor calcula el hash de lo que buscas y va directamente a esa dirección de memoria. No "busca", simplemente "va".
+
+Resumen: Gracias al hashing, comprobar si un dato existe en un Set es casi instantáneo (Complejidad O(1)), sin importar si tienes 10 datos o 1 millón.
+
+```js
+const guests = new Set();
+
+// 1. Agregar (add)
+guests.add("Pepe");
+guests.add("Ana");
+guests.add("Pepe"); // IGNORADO: El hash de "Pepe" ya está ocupado.
+
+console.log(guests); // Set(2) { 'Pepe', 'Ana' }
+
+// 2. Comprobar existencia (has) - Esto usa el Hash
+if (guests.has("Ana")) {
+    console.log("Ana está en la lista");
+}
+
+// 3. Truco: Eliminar duplicados de un Array
+const numeros = [1, 2, 2, 3];
+const unicos = [...new Set(numeros)]; // [1, 2, 3]
+```

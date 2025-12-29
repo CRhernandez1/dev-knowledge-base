@@ -1238,6 +1238,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#mapas-y-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapas y Sets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mapas y Sets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Map
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2240,6 +2279,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#mapas-y-sets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mapas y Sets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Mapas y Sets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#map" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Map
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2538,7 +2616,7 @@ El operador ternanrio sirve para expresar un condicional de una manera más comp
 </span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">guests1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">restaurant</span><span class="p">.</span><span class="nx">numGuests</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="mf">10</span><span class="p">;</span>
 </span></code></pre></div>
 <ul>
-<li>⚠️ <strong>Bug:</strong> Si <code>numGuests</code> es <code>0</code> (un número válido de invitados), JS lo toma como falsy y pone 10. <strong>Error lógico grave</strong>. Para esto fue diseñado el operador nullish explicado anteriormente.</li>
+<li>⚠️ <strong>Bug:</strong> Si <code>numGuests</code> es <code>0</code> (un número válido de guests), JS lo toma como falsy y pone 10. <strong>Error lógico grave</strong>. Para esto fue diseñado el operador nullish explicado anteriormente.</li>
 </ul>
 <h3 id="and">AND (<code>&amp;&amp;</code>)<a class="headerlink" href="#and" title="Permanent link">&para;</a></h3>
 <p>Devuelve el <strong>primer valor FALSY</strong>. Si todos son verdaderos, devuelve el último.</p>
@@ -3246,6 +3324,87 @@ En JS normal, la tercera variable sería <code>undefined</code>. Eso puede rompe
 <p>Objetos: NO son iterables.</p>
 <p>✅ { ...obj }: Sí puedes esparcir un objeto dentro de otro objeto.</p>
 <p>❌ [ ...obj ]: No puedes esparcir un objeto dentro de un array (Error: object is not iterable).</p>
+<h2 id="mapas-y-sets">Mapas y Sets<a class="headerlink" href="#mapas-y-sets" title="Permanent link">&para;</a></h2>
+<h3 id="map">Map<a class="headerlink" href="#map" title="Permanent link">&para;</a></h3>
+<p>Un Map es una colección de pares clave-valor.</p>
+<p>A primera vista parece un Objeto ({}), pero tiene diferencias fundamentales que lo hacen superior para guardar diccionarios de datos o cachés.</p>
+<p>Diferencias Clave con los Objetos:</p>
+<ul>
+<li>
+<p>Claves de cualquier tipo: En un Objeto, las claves solo pueden ser Strings o Symbols. En un Map, la clave puede ser lo que quieras: un número, un booleano, o incluso otro objeto o una función.</p>
+</li>
+<li>
+<p>Orden garantizado: El Map recuerda el orden original de inserción. Los objetos no siempre garantizan esto.</p>
+</li>
+<li>
+<p>Tamaño directo: Tienen una propiedad .size. (En un objeto tienes que contar las claves manualmente).</p>
+</li>
+</ul>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="c1">// Crear un Map</span>
+</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2" href="#__codelineno-50-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">mapObject</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Map</span><span class="p">();</span>
+</span><span id="__span-50-3"><a id="__codelineno-50-3" name="__codelineno-50-3" href="#__codelineno-50-3"></a>
+</span><span id="__span-50-4"><a id="__codelineno-50-4" name="__codelineno-50-4" href="#__codelineno-50-4"></a><span class="c1">// 1. set(clave, valor): Guardar datos</span>
+</span><span id="__span-50-5"><a id="__codelineno-50-5" name="__codelineno-50-5" href="#__codelineno-50-5"></a><span class="nx">mapObject</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;nombre&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Eduardo&#39;</span><span class="p">);</span>
+</span><span id="__span-50-6"><a id="__codelineno-50-6" name="__codelineno-50-6" href="#__codelineno-50-6"></a><span class="nx">mapObject</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;numero uno&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Clave numérica</span>
+</span><span id="__span-50-7"><a id="__codelineno-50-7" name="__codelineno-50-7" href="#__codelineno-50-7"></a><span class="nx">mapObject</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;booleano&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Clave booleana</span>
+</span><span id="__span-50-8"><a id="__codelineno-50-8" name="__codelineno-50-8" href="#__codelineno-50-8"></a>
+</span><span id="__span-50-9"><a id="__codelineno-50-9" name="__codelineno-50-9" href="#__codelineno-50-9"></a><span class="kd">const</span><span class="w"> </span><span class="nx">objClave</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">};</span>
+</span><span id="__span-50-10"><a id="__codelineno-50-10" name="__codelineno-50-10" href="#__codelineno-50-10"></a><span class="nx">mapObject</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">objClave</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Objeto como clave&#39;</span><span class="p">);</span><span class="w"> </span><span class="c1">// ¡Esto es imposible en un objeto normal!</span>
+</span><span id="__span-50-11"><a id="__codelineno-50-11" name="__codelineno-50-11" href="#__codelineno-50-11"></a>
+</span><span id="__span-50-12"><a id="__codelineno-50-12" name="__codelineno-50-12" href="#__codelineno-50-12"></a><span class="c1">// 2. get(clave): Obtener datos</span>
+</span><span id="__span-50-13"><a id="__codelineno-50-13" name="__codelineno-50-13" href="#__codelineno-50-13"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">mapObject</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mf">1</span><span class="p">));</span><span class="w"> </span><span class="c1">// &quot;numero uno&quot;</span>
+</span><span id="__span-50-14"><a id="__codelineno-50-14" name="__codelineno-50-14" href="#__codelineno-50-14"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">mapObject</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">objClave</span><span class="p">));</span><span class="w"> </span><span class="c1">// &quot;Objeto como clave&quot;</span>
+</span><span id="__span-50-15"><a id="__codelineno-50-15" name="__codelineno-50-15" href="#__codelineno-50-15"></a>
+</span><span id="__span-50-16"><a id="__codelineno-50-16" name="__codelineno-50-16" href="#__codelineno-50-16"></a><span class="c1">// 3. has(clave): ¿Existe?</span>
+</span><span id="__span-50-17"><a id="__codelineno-50-17" name="__codelineno-50-17" href="#__codelineno-50-17"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">mapObject</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="s1">&#39;nombre&#39;</span><span class="p">));</span><span class="w"> </span><span class="c1">// true</span>
+</span><span id="__span-50-18"><a id="__codelineno-50-18" name="__codelineno-50-18" href="#__codelineno-50-18"></a>
+</span><span id="__span-50-19"><a id="__codelineno-50-19" name="__codelineno-50-19" href="#__codelineno-50-19"></a><span class="c1">// 4. delete(clave) y clear()</span>
+</span><span id="__span-50-20"><a id="__codelineno-50-20" name="__codelineno-50-20" href="#__codelineno-50-20"></a><span class="nx">mapObject</span><span class="p">.</span><span class="ow">delete</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span><span class="w"> </span><span class="c1">// Borra uno</span>
+</span><span id="__span-50-21"><a id="__codelineno-50-21" name="__codelineno-50-21" href="#__codelineno-50-21"></a><span class="nx">mapObject</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span><span class="w">      </span><span class="c1">// Borra todo</span>
+</span><span id="__span-50-22"><a id="__codelineno-50-22" name="__codelineno-50-22" href="#__codelineno-50-22"></a>
+</span><span id="__span-50-23"><a id="__codelineno-50-23" name="__codelineno-50-23" href="#__codelineno-50-23"></a><span class="c1">// 5. Tamaño</span>
+</span><span id="__span-50-24"><a id="__codelineno-50-24" name="__codelineno-50-24" href="#__codelineno-50-24"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">mapObject</span><span class="p">.</span><span class="nx">size</span><span class="p">);</span>
+</span></code></pre></div>
+<h3 id="set">Set<a class="headerlink" href="#set" title="Permanent link">&para;</a></h3>
+<p>Un Set es una estructura de datos que almacena una colección de valores donde cada valor puede aparecer una sola vez. Si intentas meter un duplicado, el Set simplemente lo ignora.</p>
+<p>A diferencia de un Array, no tiene índices (no existe set[0]).</p>
+<p>⚡ El Secreto de su Velocidad: El Hashing
+La gran diferencia técnica con un Array es cómo guarda los datos internamente. Los Sets utilizan una Tabla Hash.</p>
+<ol>
+<li>
+<p>¿Qué es el Hash? Cuando guardas un dato (ej. "Hola"), el motor de JS aplica una fórmula matemática para generar un código único (hash) que sirve como dirección de memoria directa.</p>
+</li>
+<li>
+<p>La Diferencia:</p>
+<ul>
+<li>
+<p>En un Array (includes): El motor tiene que recorrer la lista elemento por elemento hasta encontrarlo (Lento si hay millones de datos).</p>
+</li>
+<li>
+<p>En un Set (has): El motor calcula el hash de lo que buscas y va directamente a esa dirección de memoria. No "busca", simplemente "va".</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>Resumen: Gracias al hashing, comprobar si un dato existe en un Set es casi instantáneo (Complejidad O(1)), sin importar si tienes 10 datos o 1 millón.</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">guests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Set</span><span class="p">();</span>
+</span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2" href="#__codelineno-51-2"></a>
+</span><span id="__span-51-3"><a id="__codelineno-51-3" name="__codelineno-51-3" href="#__codelineno-51-3"></a><span class="c1">// 1. Agregar (add)</span>
+</span><span id="__span-51-4"><a id="__codelineno-51-4" name="__codelineno-51-4" href="#__codelineno-51-4"></a><span class="nx">guests</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&quot;Pepe&quot;</span><span class="p">);</span>
+</span><span id="__span-51-5"><a id="__codelineno-51-5" name="__codelineno-51-5" href="#__codelineno-51-5"></a><span class="nx">guests</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&quot;Ana&quot;</span><span class="p">);</span>
+</span><span id="__span-51-6"><a id="__codelineno-51-6" name="__codelineno-51-6" href="#__codelineno-51-6"></a><span class="nx">guests</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&quot;Pepe&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// IGNORADO: El hash de &quot;Pepe&quot; ya está ocupado.</span>
+</span><span id="__span-51-7"><a id="__codelineno-51-7" name="__codelineno-51-7" href="#__codelineno-51-7"></a>
+</span><span id="__span-51-8"><a id="__codelineno-51-8" name="__codelineno-51-8" href="#__codelineno-51-8"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">guests</span><span class="p">);</span><span class="w"> </span><span class="c1">// Set(2) { &#39;Pepe&#39;, &#39;Ana&#39; }</span>
+</span><span id="__span-51-9"><a id="__codelineno-51-9" name="__codelineno-51-9" href="#__codelineno-51-9"></a>
+</span><span id="__span-51-10"><a id="__codelineno-51-10" name="__codelineno-51-10" href="#__codelineno-51-10"></a><span class="c1">// 2. Comprobar existencia (has) - Esto usa el Hash</span>
+</span><span id="__span-51-11"><a id="__codelineno-51-11" name="__codelineno-51-11" href="#__codelineno-51-11"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">guests</span><span class="p">.</span><span class="nx">has</span><span class="p">(</span><span class="s2">&quot;Ana&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-51-12"><a id="__codelineno-51-12" name="__codelineno-51-12" href="#__codelineno-51-12"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Ana está en la lista&quot;</span><span class="p">);</span>
+</span><span id="__span-51-13"><a id="__codelineno-51-13" name="__codelineno-51-13" href="#__codelineno-51-13"></a><span class="p">}</span>
+</span><span id="__span-51-14"><a id="__codelineno-51-14" name="__codelineno-51-14" href="#__codelineno-51-14"></a>
+</span><span id="__span-51-15"><a id="__codelineno-51-15" name="__codelineno-51-15" href="#__codelineno-51-15"></a><span class="c1">// 3. Truco: Eliminar duplicados de un Array</span>
+</span><span id="__span-51-16"><a id="__codelineno-51-16" name="__codelineno-51-16" href="#__codelineno-51-16"></a><span class="kd">const</span><span class="w"> </span><span class="nx">numeros</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span>
+</span><span id="__span-51-17"><a id="__codelineno-51-17" name="__codelineno-51-17" href="#__codelineno-51-17"></a><span class="kd">const</span><span class="w"> </span><span class="nx">unicos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[...</span><span class="ow">new</span><span class="w"> </span><span class="nb">Set</span><span class="p">(</span><span class="nx">numeros</span><span class="p">)];</span><span class="w"> </span><span class="c1">// [1, 2, 3]</span>
+</span></code></pre></div>
 
 
 

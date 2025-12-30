@@ -1277,6 +1277,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#manejo-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manejo de Errores
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2315,6 +2326,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manejo-de-errores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manejo de Errores
+      
+    </span>
+  </a>
   
 </li>
       
@@ -3404,6 +3426,150 @@ La gran diferencia técnica con un Array es cómo guarda los datos internamente.
 </span><span id="__span-51-15"><a id="__codelineno-51-15" name="__codelineno-51-15" href="#__codelineno-51-15"></a><span class="c1">// 3. Truco: Eliminar duplicados de un Array</span>
 </span><span id="__span-51-16"><a id="__codelineno-51-16" name="__codelineno-51-16" href="#__codelineno-51-16"></a><span class="kd">const</span><span class="w"> </span><span class="nx">numeros</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="mf">3</span><span class="p">];</span>
 </span><span id="__span-51-17"><a id="__codelineno-51-17" name="__codelineno-51-17" href="#__codelineno-51-17"></a><span class="kd">const</span><span class="w"> </span><span class="nx">unicos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[...</span><span class="ow">new</span><span class="w"> </span><span class="nb">Set</span><span class="p">(</span><span class="nx">numeros</span><span class="p">)];</span><span class="w"> </span><span class="c1">// [1, 2, 3]</span>
+</span></code></pre></div>
+<h2 id="manejo-de-errores">Manejo de Errores<a class="headerlink" href="#manejo-de-errores" title="Permanent link">&para;</a></h2>
+<p><strong>1. Parsing Error vs. Runtime Error</strong></p>
+<ul>
+<li>
+<p><strong>Parsing Error (Errores de Análisis):</strong> Ocurren <em>antes</em> de que el código empiece a ejecutarse. El motor analiza la gramática del script; si encuentra un fallo de sintaxis (ej. falta un paréntesis), detiene el proceso y <strong>no ejecuta nada</strong>.</p>
+</li>
+<li>
+<p><strong>Runtime Error (Excepciones):</strong> El código es gramaticalmente correcto y la ejecución comienza, pero ocurre algo inesperado durante el proceso (ej. intentar leer una propiedad de <code>null</code>). Estos son los errores que se pueden manejar mediante código.</p>
+</li>
+</ul>
+<p><strong>2. Flujo de Control en Excepciones</strong></p>
+<ul>
+<li>
+<p>Cuando el motor detecta una excepción dentro de un bloque <code>try</code>, <strong>suspende inmediatamente</strong> la ejecución en esa línea.</p>
+</li>
+<li>
+<p>El resto del código dentro del <code>try</code> se ignora.</p>
+</li>
+<li>
+<p>El motor busca el bloque <code>catch</code> más cercano en la pila de llamadas (Call Stack) y transfiere el control ("salta") directamente allí.</p>
+</li>
+</ul>
+<p><strong>3. El Objeto Error y Stack Trace</strong></p>
+<ul>
+<li>
+<p>Al generarse un error, JS crea un objeto con propiedades clave: <code>name</code> y <code>message</code>.</p>
+</li>
+<li>
+<p><strong><code>stack</code> (Pila de llamadas):</strong> Contiene una "foto" instantánea del Call Stack en el momento del error. Muestra la jerarquía de funciones activas, permitiendo rastrear el origen del problema (archivo, línea, función).</p>
+</li>
+</ul>
+<hr />
+<p><strong>1. Tipos de Errores Nativos</strong></p>
+<p>Constructores integrados en el lenguaje:</p>
+<ul>
+<li>
+<p><strong><code>ReferenceError</code>:</strong> Intento de uso de una variable no declarada o fuera de alcance.</p>
+</li>
+<li>
+<p><strong><code>TypeError</code>:</strong> Operación no válida para el tipo de dato (ej. ejecutar una variable que no es función, acceder a propiedades de <code>undefined</code>).</p>
+</li>
+<li>
+<p><strong><code>SyntaxError</code>:</strong> Código mal escrito.</p>
+</li>
+<li>
+<p><strong><code>RangeError</code>:</strong> Valor numérico fuera del rango permitido.</p>
+</li>
+</ul>
+<p><strong>2. Estructura <code>try...catch...finally</code></strong></p>
+<ul>
+<li>
+<p><strong><code>try</code>:</strong> Envuelve el código susceptible a fallar.</p>
+</li>
+<li>
+<p><strong><code>catch(err)</code>:</strong> Se ejecuta <strong>solo</strong> si ocurre un error. Recibe el objeto del error como argumento.</p>
+</li>
+<li>
+<p><strong><code>finally</code>:</strong> Se ejecuta <strong>SIEMPRE</strong>, ocurra un error o no.</p>
+<ul>
+<li><em>Uso principal:</em> Limpieza de recursos (cerrar conexiones, liberar memoria, resetear UI).</li>
+</ul>
+</li>
+</ul>
+<p><strong>3. Throw vs. Rethrow</strong></p>
+<ul>
+<li>
+<p><strong><code>throw</code>:</strong> Lanza una excepción manualmente para detener la ejecución cuando no se cumple una regla lógica.</p>
+</li>
+<li>
+<p><strong><code>rethrow</code> (Relanzar):</strong> Capturar un error en un nivel bajo, procesarlo (ej. guardar un log) y volver a lanzarlo (<code>throw err</code>) para que sea manejado por una capa superior de la aplicación.</p>
+</li>
+</ul>
+<hr />
+<p>Estructura Básica e Inspección</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Iniciando proceso...&quot;</span><span class="p">);</span>
+</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a><span class="w">    </span><span class="nx">funcionInexistente</span><span class="p">();</span><span class="w"> </span><span class="c1">// Lanza ReferenceError</span>
+</span><span id="__span-52-4"><a id="__codelineno-52-4" name="__codelineno-52-4" href="#__codelineno-52-4"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Esto nunca se imprime&quot;</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-52-5"><a id="__codelineno-52-5" name="__codelineno-52-5" href="#__codelineno-52-5"></a>
+</span><span id="__span-52-6"><a id="__codelineno-52-6" name="__codelineno-52-6" href="#__codelineno-52-6"></a><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-52-7"><a id="__codelineno-52-7" name="__codelineno-52-7" href="#__codelineno-52-7"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">&quot;¡Error capturado!&quot;</span><span class="p">);</span>
+</span><span id="__span-52-8"><a id="__codelineno-52-8" name="__codelineno-52-8" href="#__codelineno-52-8"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Tipo:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span><span class="w">     </span><span class="c1">// ReferenceError</span>
+</span><span id="__span-52-9"><a id="__codelineno-52-9" name="__codelineno-52-9" href="#__codelineno-52-9"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Mensaje:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span><span class="w"> </span><span class="c1">// funcionInexistente is not defined</span>
+</span><span id="__span-52-10"><a id="__codelineno-52-10" name="__codelineno-52-10" href="#__codelineno-52-10"></a><span class="w">    </span><span class="c1">// console.log(error.stack); // Traza completa para debugging</span>
+</span><span id="__span-52-11"><a id="__codelineno-52-11" name="__codelineno-52-11" href="#__codelineno-52-11"></a><span class="p">}</span>
+</span></code></pre></div>
+<p>Throw (Error Manual) y Finally</p>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="kd">function</span><span class="w"> </span><span class="nx">procesarPago</span><span class="p">(</span><span class="nx">monto</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-53-2"><a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-53-3"><a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">monto</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-53-4"><a id="__codelineno-53-4" name="__codelineno-53-4" href="#__codelineno-53-4"></a><span class="w">            </span><span class="c1">// Detenemos la ejecución manualmente</span>
+</span><span id="__span-53-5"><a id="__codelineno-53-5" name="__codelineno-53-5" href="#__codelineno-53-5"></a><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s2">&quot;El monto debe ser positivo&quot;</span><span class="p">);</span>
+</span><span id="__span-53-6"><a id="__codelineno-53-6" name="__codelineno-53-6" href="#__codelineno-53-6"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-53-7"><a id="__codelineno-53-7" name="__codelineno-53-7" href="#__codelineno-53-7"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Procesando pago...&quot;</span><span class="p">);</span>
+</span><span id="__span-53-8"><a id="__codelineno-53-8" name="__codelineno-53-8" href="#__codelineno-53-8"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-53-9"><a id="__codelineno-53-9" name="__codelineno-53-9" href="#__codelineno-53-9"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Fallo en el pago:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+</span><span id="__span-53-10"><a id="__codelineno-53-10" name="__codelineno-53-10" href="#__codelineno-53-10"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">finally</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-53-11"><a id="__codelineno-53-11" name="__codelineno-53-11" href="#__codelineno-53-11"></a><span class="w">        </span><span class="c1">// Se ejecuta siempre, haya error o no</span>
+</span><span id="__span-53-12"><a id="__codelineno-53-12" name="__codelineno-53-12" href="#__codelineno-53-12"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Operación finalizada (Limpieza de sistema).&quot;</span><span class="p">);</span>
+</span><span id="__span-53-13"><a id="__codelineno-53-13" name="__codelineno-53-13" href="#__codelineno-53-13"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-53-14"><a id="__codelineno-53-14" name="__codelineno-53-14" href="#__codelineno-53-14"></a><span class="p">}</span>
+</span><span id="__span-53-15"><a id="__codelineno-53-15" name="__codelineno-53-15" href="#__codelineno-53-15"></a>
+</span><span id="__span-53-16"><a id="__codelineno-53-16" name="__codelineno-53-16" href="#__codelineno-53-16"></a><span class="nx">procesarPago</span><span class="p">(</span><span class="o">-</span><span class="mf">10</span><span class="p">);</span>
+</span></code></pre></div>
+<p>Custom Errors (Versión Moderna: Clases)</p>
+<p>Hoy en día se utiliza la palabra clave <code>class</code> y <code>extends</code> para heredar todas las funcionalidades del objeto nativo <code>Error</code> (como el stack trace automático).</p>
+<p><strong>Ventajas Teóricas:</strong></p>
+<ul>
+<li>
+<p><strong>Herencia correcta:</strong> Al usar <code>extends Error</code>, JS conecta automáticamente la cadena de prototipos.</p>
+</li>
+<li>
+<p><strong><code>super(message)</code>:</strong> Llama al constructor interno de <code>Error</code>, que se encarga de asignar la propiedad <code>.message</code> correctamente.</p>
+</li>
+<li>
+<p><strong>Identificación:</strong> Permite usar <code>instanceof</code> para identificar el tipo de error de forma precisa.</p>
+</li>
+</ul>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-54-1"><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="c1">// Definición moderna usando Clases</span>
+</span><span id="__span-54-2"><a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a><span class="kd">class</span><span class="w"> </span><span class="nx">ValidationError</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-54-3"><a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a><span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-54-4"><a id="__codelineno-54-4" name="__codelineno-54-4" href="#__codelineno-54-4"></a><span class="w">        </span><span class="c1">// 1. Llamamos al constructor padre (Error) para que configure el mensaje</span>
+</span><span id="__span-54-5"><a id="__codelineno-54-5" name="__codelineno-54-5" href="#__codelineno-54-5"></a><span class="w">        </span><span class="k">super</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-54-6"><a id="__codelineno-54-6" name="__codelineno-54-6" href="#__codelineno-54-6"></a>
+</span><span id="__span-54-7"><a id="__codelineno-54-7" name="__codelineno-54-7" href="#__codelineno-54-7"></a><span class="w">        </span><span class="c1">// 2. Asignamos el nombre de nuestra clase</span>
+</span><span id="__span-54-8"><a id="__codelineno-54-8" name="__codelineno-54-8" href="#__codelineno-54-8"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;ValidationError&quot;</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-54-9"><a id="__codelineno-54-9" name="__codelineno-54-9" href="#__codelineno-54-9"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-54-10"><a id="__codelineno-54-10" name="__codelineno-54-10" href="#__codelineno-54-10"></a><span class="p">}</span>
+</span><span id="__span-54-11"><a id="__codelineno-54-11" name="__codelineno-54-11" href="#__codelineno-54-11"></a>
+</span><span id="__span-54-12"><a id="__codelineno-54-12" name="__codelineno-54-12" href="#__codelineno-54-12"></a><span class="c1">// Uso</span>
+</span><span id="__span-54-13"><a id="__codelineno-54-13" name="__codelineno-54-13" href="#__codelineno-54-13"></a><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-54-14"><a id="__codelineno-54-14" name="__codelineno-54-14" href="#__codelineno-54-14"></a><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">usuario</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+</span><span id="__span-54-15"><a id="__codelineno-54-15" name="__codelineno-54-15" href="#__codelineno-54-15"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">usuario</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-54-16"><a id="__codelineno-54-16" name="__codelineno-54-16" href="#__codelineno-54-16"></a><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">ValidationError</span><span class="p">(</span><span class="s2">&quot;El usuario no puede estar vacío&quot;</span><span class="p">);</span>
+</span><span id="__span-54-17"><a id="__codelineno-54-17" name="__codelineno-54-17" href="#__codelineno-54-17"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-54-18"><a id="__codelineno-54-18" name="__codelineno-54-18" href="#__codelineno-54-18"></a><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-54-19"><a id="__codelineno-54-19" name="__codelineno-54-19" href="#__codelineno-54-19"></a><span class="w">    </span><span class="c1">// Podemos comprobar exactamente qué tipo de error es</span>
+</span><span id="__span-54-20"><a id="__codelineno-54-20" name="__codelineno-54-20" href="#__codelineno-54-20"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="w"> </span><span class="ow">instanceof</span><span class="w"> </span><span class="nx">ValidationError</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-54-21"><a id="__codelineno-54-21" name="__codelineno-54-21" href="#__codelineno-54-21"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Error de validación detectado:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+</span><span id="__span-54-22"><a id="__codelineno-54-22" name="__codelineno-54-22" href="#__codelineno-54-22"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-54-23"><a id="__codelineno-54-23" name="__codelineno-54-23" href="#__codelineno-54-23"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;Error desconocido:&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
+</span><span id="__span-54-24"><a id="__codelineno-54-24" name="__codelineno-54-24" href="#__codelineno-54-24"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-54-25"><a id="__codelineno-54-25" name="__codelineno-54-25" href="#__codelineno-54-25"></a><span class="p">}</span>
 </span></code></pre></div>
 
 

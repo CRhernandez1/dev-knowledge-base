@@ -1,5 +1,49 @@
 # Fundamentos teóricos del lenguaje
 
+## use strict
+
+**Definición:** Directiva (cadena de texto) introducida en ES5 que fuerza al motor de JS a ejecutar el código en **"Modo Estricto"**.
+
+**¿Para qué sirve?**
+
+Cambia la forma en que el motor procesa el código: convierte "errores silenciosos" (malas prácticas que JS perdonaba antes) en **errores reales (Exceptions)**, obligándote a escribir código más seguro y optimizable.
+
+**¿Cuándo usarlo?**
+
+Manual (Escribirlo explícitamente):
+
+* Es necesario ponerlo al principio de scripts "clásicos" (legacy) o archivos `.js` simples que no usan el sistema de módulos moderno.
+
+Implícito (Ya viene activado):
+
+En el desarrollo moderno, **raramente necesitas escribirlo** porque ya es el comportamiento por defecto en:
+
+1.  **Módulos ES6:** Cualquier archivo tratado como módulo (`import`/`export` o `<script type="module">`) es estricto automáticamente.
+
+2.  **Clases:** Todo el código dentro del cuerpo de una `class { ... }` se ejecuta siempre en modo estricto.
+
+3.  **Herramientas Modernas:** Si usas TypeScript, Babel, o bundlers (Webpack, Vite), estos suelen manejarlo automáticamente.
+
+**Principales Cambios**
+
+1.  **Prohíbe variables globales accidentales:** No puedes asignar valor a una variable que no hayas declarado (sin `let`, `const` o `var`).
+2.  **Seguridad en `this`:** En funciones sueltas, `this` pasa a ser `undefined` en lugar de apuntar al objeto global (`window`), evitando modificar el entorno global por error.
+3.  **Bloqueo de duplicados:** No permite parámetros duplicados en funciones (ej. `function sum(a, a)`).
+
+```javascript
+"use strict";
+
+// 1. Error: Variable no declarada
+mensaje = "Hola"; // ReferenceError: mensaje is not defined 
+// (Sin strict, JS crearía una variable global "mensaje" automáticamente)
+
+// 2. Cambio en this
+function checkContext() {
+    console.log(this);
+}
+checkContext(); // undefined (Sin strict, devolvería 'window')
+```
+
 ## **Inclusión de JavaScript en HTML**
 
 La filosofía clave en programación es la **separación de preocupaciones** (separation of concern): **HTML** para la estructura, **CSS** para el estilo y **JavaScript** para el comportamiento dinámico. Deben mantenerse en archivos separados.
@@ -347,3 +391,100 @@ console.log("2. Fin del Script Global");
 5.  `Microtarea (Promesa)`
 
 6.  `Macrotarea (Timeout)`
+
+## This 
+
+**Definición:** Referencia al **contexto de ejecución actual** (quién llama a la función en ese momento), no al lugar donde se escribió el código.
+
+* **Contexto vs Scope:** El Scope es estático (dónde escribes); `this` es dinámico (cómo invocas).
+
+* **Global Context:**
+    * **Sin strict:** *Navegador:* `window` | *Node:* `global`.
+    * **"use strict":** En funciones sueltas, `this` es `undefined`.
+    ```javascript
+    function show() { console.log(this); }
+    show(); // undefined (Strict Mode) vs window (Non-strict)
+    ```
+
+**Implicit Binding**
+
+* Ocurre en métodos: `objeto.metodo()`.
+
+* **Regla:** `this` apunta al objeto que está **a la izquierda del punto**.
+
+```javascript
+const user = {
+    name: "Ana",
+    greet() { console.log(this.name); }
+};
+user.greet(); // "Ana" (this es user)
+```
+
+**Explicit Binding (Control Manual)**
+
+Asocia el `this` de forma explícita, al objeto pasado como argumento en los siguientes metodos.
+
+* .call(obj, args...): Ejecuta inmediatamente. Args separados por comas.
+
+* .apply(obj, [args]): Ejecuta inmediatamente. Args en Array.
+
+* .bind(obj): NO ejecuta. Devuelve una nueva función atada permanentemente.
+
+```js
+const person = { name: "Luis" };
+
+function say(lang) {
+     console.log(`${lang}: ${this.name}`); 
+}
+
+say.call(person, "ES");      // "ES: Luis"
+say.apply(person, ["EN"]);   // "EN: Luis"
+const boundFn = say.bind(person);
+boundFn("FR");               // "FR: Luis"
+```
+
+**New Binding**
+
+Al usar new, JS crea un objeto vacío y asigna this a esa nueva instancia.
+
+```js
+function Car(model) {
+    this.model = model; 
+}
+const myCar = new Car("Toyota"); // this = nuevo objeto
+```
+
+**Arrow Functions (Lexical Scope)**
+
+Excepción: NO tienen this propio.
+
+Mecánica: Toman prestado el this de su entorno padre (donde fueron escritas).
+
+* Fallo
+
+```js
+const usuario = {
+    nombre: "Carlos",
+    // ❌ MAL: Arrow function como método directo
+    saludar: () => {
+        console.log(this.nombre); 
+        console.log(this);
+    }
+};
+
+usuario.saludar(); 
+// Salida 1: undefined (porque busca nombre en window)
+// Salida 2: Window { ... } (el objeto global)
+```
+* Solución (aunque se recomienda, no usar arrow function si vamos a necesitar un this)
+
+```js
+const obj = {
+    name: "Data",
+    process: function() {
+        // Arrow function hereda 'this' de 'process' (que es 'obj')
+        setTimeout(() => console.log(this.name), 100); 
+    }
+};
+obj.process(); // "Data" (Funciona gracias a la arrow)
+```

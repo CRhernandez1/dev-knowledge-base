@@ -1152,3 +1152,134 @@ if (guests.has("Ana")) {
 const numeros = [1, 2, 2, 3];
 const unicos = [...new Set(numeros)]; // [1, 2, 3]
 ```
+
+## Manejo de Errores
+
+**1. Parsing Error vs. Runtime Error**
+
+* **Parsing Error (Errores de Análisis):** Ocurren *antes* de que el código empiece a ejecutarse. El motor analiza la gramática del script; si encuentra un fallo de sintaxis (ej. falta un paréntesis), detiene el proceso y **no ejecuta nada**.
+
+* **Runtime Error (Excepciones):** El código es gramaticalmente correcto y la ejecución comienza, pero ocurre algo inesperado durante el proceso (ej. intentar leer una propiedad de `null`). Estos son los errores que se pueden manejar mediante código.
+
+**2. Flujo de Control en Excepciones**
+
+* Cuando el motor detecta una excepción dentro de un bloque `try`, **suspende inmediatamente** la ejecución en esa línea.
+
+* El resto del código dentro del `try` se ignora.
+
+* El motor busca el bloque `catch` más cercano en la pila de llamadas (Call Stack) y transfiere el control ("salta") directamente allí.
+
+**3. El Objeto Error y Stack Trace**
+
+* Al generarse un error, JS crea un objeto con propiedades clave: `name` y `message`.
+
+* **`stack` (Pila de llamadas):** Contiene una "foto" instantánea del Call Stack en el momento del error. Muestra la jerarquía de funciones activas, permitiendo rastrear el origen del problema (archivo, línea, función).
+
+---
+
+
+**1. Tipos de Errores Nativos**
+
+Constructores integrados en el lenguaje:
+
+* **`ReferenceError`:** Intento de uso de una variable no declarada o fuera de alcance.
+
+* **`TypeError`:** Operación no válida para el tipo de dato (ej. ejecutar una variable que no es función, acceder a propiedades de `undefined`).
+
+* **`SyntaxError`:** Código mal escrito.
+
+* **`RangeError`:** Valor numérico fuera del rango permitido.
+
+**2. Estructura `try...catch...finally`**
+
+* **`try`:** Envuelve el código susceptible a fallar.
+
+* **`catch(err)`:** Se ejecuta **solo** si ocurre un error. Recibe el objeto del error como argumento.
+
+* **`finally`:** Se ejecuta **SIEMPRE**, ocurra un error o no.
+    * *Uso principal:* Limpieza de recursos (cerrar conexiones, liberar memoria, resetear UI).
+
+**3. Throw vs. Rethrow**
+
+* **`throw`:** Lanza una excepción manualmente para detener la ejecución cuando no se cumple una regla lógica.
+
+* **`rethrow` (Relanzar):** Capturar un error en un nivel bajo, procesarlo (ej. guardar un log) y volver a lanzarlo (`throw err`) para que sea manejado por una capa superior de la aplicación.
+
+---
+
+Estructura Básica e Inspección
+
+```javascript
+try {
+    console.log("Iniciando proceso...");
+    funcionInexistente(); // Lanza ReferenceError
+    console.log("Esto nunca se imprime"); 
+    
+} catch (error) {
+    console.error("¡Error capturado!");
+    console.log("Tipo:", error.name);     // ReferenceError
+    console.log("Mensaje:", error.message); // funcionInexistente is not defined
+    // console.log(error.stack); // Traza completa para debugging
+}
+```
+
+Throw (Error Manual) y Finally
+
+```js
+function procesarPago(monto) {
+    try {
+        if (monto <= 0) {
+            // Detenemos la ejecución manualmente
+            throw new Error("El monto debe ser positivo");
+        }
+        console.log("Procesando pago...");
+    } catch (err) {
+        console.log("Fallo en el pago:", err.message);
+    } finally {
+        // Se ejecuta siempre, haya error o no
+        console.log("Operación finalizada (Limpieza de sistema).");
+    }
+}
+
+procesarPago(-10);
+```
+
+Custom Errors (Versión Moderna: Clases)
+
+Hoy en día se utiliza la palabra clave `class` y `extends` para heredar todas las funcionalidades del objeto nativo `Error` (como el stack trace automático).
+
+**Ventajas Teóricas:**
+
+* **Herencia correcta:** Al usar `extends Error`, JS conecta automáticamente la cadena de prototipos.
+
+* **`super(message)`:** Llama al constructor interno de `Error`, que se encarga de asignar la propiedad `.message` correctamente.
+
+* **Identificación:** Permite usar `instanceof` para identificar el tipo de error de forma precisa.
+
+```javascript
+// Definición moderna usando Clases
+class ValidationError extends Error {
+    constructor(message) {
+        // 1. Llamamos al constructor padre (Error) para que configure el mensaje
+        super(message); 
+        
+        // 2. Asignamos el nombre de nuestra clase
+        this.name = "ValidationError"; 
+    }
+}
+
+// Uso
+try {
+    const usuario = "";
+    if (!usuario) {
+        throw new ValidationError("El usuario no puede estar vacío");
+    }
+} catch (err) {
+    // Podemos comprobar exactamente qué tipo de error es
+    if (err instanceof ValidationError) {
+        console.log("Error de validación detectado:", err.message);
+    } else {
+        console.log("Error desconocido:", err);
+    }
+}
+```

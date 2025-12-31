@@ -7,6 +7,7 @@ nav = [
         "java-script/index.md",
         "java-script/standard-built-in-objects.md",
         {"Fundamentos teóricos" = "java-script/teorical-fundations.md"},
+        {"Programación orientada a Objetos" = "java-script/oop.md"},
     ] },
     { "SQL" = [
         "sql/index.md",

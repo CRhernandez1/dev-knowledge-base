@@ -30,6 +30,14 @@ Ejemplo: `Number("10")` convierte un string a número.
 Valores que nunca cambian y son necesarios matemáticamente o por configuración.
 Ejemplo: `Math.PI` o `Number.MAX_VALUE`.
 
+Esta sección explica la arquitectura interna de los objetos nativos de JavaScript.
+
+Dado que la cantidad de métodos y propiedades integrados es extensa y varía entre versiones, estos apuntes no pretenden ser una referencia exhaustiva, sino orientativa, mostrando las más usadas.
+
+Para consultar la lista completa, actualizada y detallada de métodos para cada objeto, es mejor recurrir siempre a la referencia oficial:
+
+* [MDN Web Docs - Standard Built-in Objects](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects)
+
 ## Strings
 
 JavaScript proporciona una gran cantidad de métodos para manipular texto.

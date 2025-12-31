@@ -1,0 +1,1714 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../teorical-fundations/">
+      
+      
+        <link rel="next" href="../../sql/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.14">
+    
+    
+      
+        <title>Programación Orientada a Objetos (OOP) - knowledge base</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.f1b6466b.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+  <style>:root{}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,a=__md_scope)=>JSON.parse(t.getItem(a.pathname+"."+e)),__md_set=(e,t,a=localStorage,_=__md_scope)=>{try{a.setItem(_.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#programacion-orientada-a-objetos-oop" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../.." title="knowledge base" class="md-header__button md-logo" aria-label="knowledge base" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            knowledge base
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Programación Orientada a Objetos (OOP)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Buscar">
+  <button type="button" class="md-search__button">
+    Buscar
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  JavaScript
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../sql/" class="md-tabs__link">
+          
+  
+  SQL
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="knowledge base" class="md-nav__button md-logo" aria-label="knowledge base" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    knowledge base
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaScript
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    JavaScript
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaScript
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../standard-built-in-objects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standard Built-in Objects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../teorical-fundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fundamentos teóricos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programación orientada a Objetos
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Programación orientada a Objetos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#conceptos-fundamentales-de-oop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conceptos Fundamentales de OOP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prototipos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prototipos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constructor-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constructor Functions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Constructor Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anadiendo-metodos-solucion-de-rendimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Añadiendo métodos (Solución de rendimiento)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propiedades-y-verificacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Propiedades y Verificación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propiedades-propias-vs-heredadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Propiedades propias vs Heredadas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prototypal-inheritance-y-the-prototype-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prototypal Inheritance y The Prototype Chain
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prototypal Inheritance y The Prototype Chain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-flujo-de-busqueda-lookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El flujo de búsqueda (Lookup)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualizacion-de-la-cadena-ejemplo-person" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visualización de la cadena (Ejemplo Person)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prototypal-inheritance-en-objetos-nativos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prototypal Inheritance en Objetos Nativos.
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prototypal Inheritance en Objetos Nativos.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arrays
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extender-prototipos-mala-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extender Prototipos (Mala Práctica)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getters-y-setters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getters y Setters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Static Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#herencia-entre-clases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Herencia entre Clases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encapsulamiento-class-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encapsulamiento: Class Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objectcreate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Object.create()
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQL
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SQL
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sql/sqlite/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SQLite
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#conceptos-fundamentales-de-oop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conceptos Fundamentales de OOP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prototipos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prototipos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#constructor-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Constructor Functions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Constructor Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anadiendo-metodos-solucion-de-rendimiento" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Añadiendo métodos (Solución de rendimiento)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propiedades-y-verificacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Propiedades y Verificación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#propiedades-propias-vs-heredadas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Propiedades propias vs Heredadas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prototypal-inheritance-y-the-prototype-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prototypal Inheritance y The Prototype Chain
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prototypal Inheritance y The Prototype Chain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-flujo-de-busqueda-lookup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        El flujo de búsqueda (Lookup)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualizacion-de-la-cadena-ejemplo-person" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visualización de la cadena (Ejemplo Person)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prototypal-inheritance-en-objetos-nativos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prototypal Inheritance en Objetos Nativos.
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prototypal Inheritance en Objetos Nativos.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arrays
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extender-prototipos-mala-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extender Prototipos (Mala Práctica)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Classes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getters-y-setters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getters y Setters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#static-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Static Methods
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#herencia-entre-clases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Herencia entre Clases
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encapsulamiento-class-fields" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encapsulamiento: Class Fields
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#objectcreate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Object.create()
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+<h1 id="programacion-orientada-a-objetos-oop">Programación Orientada a Objetos (OOP)<a class="headerlink" href="#programacion-orientada-a-objetos-oop" title="Permanent link">&para;</a></h1>
+<p>Estos apuntes recogen los fundamentos y patrones de diseño de la Programación Orientada a Objetos (OOP) en JavaScript.</p>
+<p><strong>Nota Importante:</strong></p>
+<p>El contenido hace especial hincapié en las <strong>Clases de ES6</strong>, ya que representan el estándar moderno y profesional más utilizado en la industria actual.</p>
+<p>Aunque se explican las mecánicas subyacentes y tradicionales (como las <em>Constructor Functions</em> y <code>Object.create</code>) para comprender cómo funciona el motor por debajo, no se cubren todos sus casos borde. En caso de necesitar profundizar en sintaxis <em>legacy</em> o detalles muy específicos de implementaciones antiguas, <a href="https://developer.mozilla.org/">documentación oficial de MDN</a>.</p>
+<h2 id="conceptos-fundamentales-de-oop">Conceptos Fundamentales de OOP<a class="headerlink" href="#conceptos-fundamentales-de-oop" title="Permanent link">&para;</a></h2>
+<p><strong>¿Qué es la OOP?</strong>
+Es un paradigma de programación basado en el concepto de <strong>objetos</strong>. Usamos objetos para modelar aspectos del mundo real (ej. un usuario, una lista de tareas) o abstracto (ej. estructura de datos HTML).</p>
+<ul>
+<li>Los objetos contienen <strong>datos</strong> (propiedades) y <strong>código</strong> (métodos).</li>
+<li>Los objetos son bloques de construcción "autocontenidos".</li>
+<li>Interactúan entre sí a través de una API pública (métodos accesibles).</li>
+</ul>
+<p><strong>Los 4 Pilares de la OOP</strong></p>
+<ol>
+<li><strong>Abstracción:</strong> Ignorar u ocultar los detalles complejos "under the hood" (como funciona por dentro) y exponer solo lo necesario (ej. usar <code>addEventListener</code> sin saber cómo el navegador maneja el evento internamente).</li>
+<li><strong>Encapsulamiento:</strong> Mantener propiedades y métodos privados dentro de la clase, inaccesibles desde fuera. Esto previene que el estado se modifique accidentalmente por código externo. (En JS "tradicional" es difícil, pero existen convenciones y métodos modernos).</li>
+<li><strong>Herencia:</strong> Hacer que una clase (hija) herede propiedades y métodos de otra clase (padre). Evita duplicar código.</li>
+<li><strong>Polimorfismo:</strong> Una clase hija puede sobrescribir un método heredado del padre para adaptarlo a sus necesidades.</li>
+</ol>
+<hr />
+<h2 id="prototipos">Prototipos<a class="headerlink" href="#prototipos" title="Permanent link">&para;</a></h2>
+<p>A diferencia de lenguajes "Clásicos" (Java, C++, Python) donde las clases copian su comportamiento a las instancias, JavaScript utiliza <strong>Prototipos</strong>.</p>
+<ul>
+<li><strong>Herencia Prototípica (Prototypal Inheritance):</strong> Todos los objetos en JS están vinculados a un objeto prototipo.</li>
+<li><strong>Delegación:</strong> Cuando intentamos acceder a una propiedad o método en un objeto, si JS no lo encuentra allí, busca en su prototipo. El objeto "delega" la tarea.</li>
+</ul>
+<p><strong>Las 3 formas de implementar OOP en JS</strong></p>
+<ol>
+<li><strong>Constructor Functions (Funciones Constructoras):</strong> Técnica desde el inicio de JS. Se usan funciones normales llamadas con <code>new</code>.</li>
+<li><strong>ES6 Classes:</strong> Sintaxis moderna (2015). <strong>IMPORTANTE:</strong> Es solo <strong>"Azúcar Sintáctica" (Syntactic Sugar)</strong>. Por debajo siguen siendo funciones constructoras y prototipos; no cambiaron cómo funciona el lenguaje, solo cómo se escribe.</li>
+<li><strong>Object.create():</strong> La forma más directa de vincular un objeto a un prototipo específico (menos común en el día a día básico).</li>
+</ol>
+<hr />
+<h2 id="constructor-functions">Constructor Functions<a class="headerlink" href="#constructor-functions" title="Permanent link">&para;</a></h2>
+<p>Las Funciones Constructoras son patrones para crear objetos programáticamente.</p>
+<ul>
+<li>
+<p><strong>Convención:</strong> Siempre empezar con <strong>Mayúscula</strong> (<code>PersonObject</code>, no <code>personObject</code>).</p>
+</li>
+<li>
+<p><strong>Restricción:</strong> No se pueden usar <em>Arrow Functions</em> porque no tienen su propio <code>this</code>.</p>
+</li>
+</ul>
+<p><strong>Proceso de Ejecución (Los 4 pasos de <code>new</code>)</strong></p>
+<p>Cuando ejecutamos <code>const jonas = new Person('Jonas', 1991);</code>, el motor hace esto:</p>
+<ol>
+<li>
+<p><strong>Creación:</strong> Se crea un nuevo objeto vacío <code>{}</code>.</p>
+</li>
+<li>
+<p><strong>Binding:</strong> El <code>this</code> de la función se asigna a ese nuevo objeto.</p>
+</li>
+<li>
+<p><strong>Linking (Enlace):</strong> El nuevo objeto se vincula a su prototipo (<code>__proto__</code> se conecta a <code>Person.prototype</code>).</p>
+</li>
+<li>
+<p><strong>Return:</strong> La función devuelve automáticamente el objeto.</p>
+</li>
+</ol>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">Person</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span><span class="w"> </span><span class="nx">birthYear</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="c1">// Propiedades de instancia (Instance Properties)</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">firstName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">firstName</span><span class="p">;</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">birthYear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">birthYear</span><span class="p">;</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="c1">// ⛔️ NUNCA crear métodos dentro del constructor</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="c1">// this.calcAge = function() { ... };</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="c1">// Razón: Cada nueva instancia crearía una copia de la función.</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="c1">// Si tienes 1000 usuarios, tendrías 1000 copias idénticas en memoria.</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">};</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="kd">const</span><span class="w"> </span><span class="nx">matilda</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Person</span><span class="p">(</span><span class="s1">&#39;Matilda&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">2017</span><span class="p">);</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1">// matilda es una INSTANCIA de Person</span>
+</span></code></pre></div>
+<ul>
+<li>Cada función en JS (incluidos los constructores) tiene una propiedad llamada <code>.prototype</code>.</li>
+</ul>
+<p><strong>Regla de Oro:</strong>
+* <code>Person.prototype</code> NO es el prototipo de <code>Person</code>.
+* Es el prototipo que usarán los objetos creados por <code>Person</code>.</p>
+<h3 id="anadiendo-metodos-solucion-de-rendimiento">Añadiendo métodos (Solución de rendimiento)<a class="headerlink" href="#anadiendo-metodos-solucion-de-rendimiento" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Añadimos los métodos al objeto <code>prototype</code>.</li>
+<li>Así solo existe una copia en memoria y todas las instancias la comparten mediante referencia.</li>
+</ul>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1">// Prototypal Inheritance en acción  </span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nx">Person</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">calcAge</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">2037</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">birthYear</span><span class="p">);</span><span class="w">  </span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="p">};</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nx">matilda</span><span class="p">.</span><span class="nx">calcAge</span><span class="p">();</span><span class="w"> </span><span class="c1">// 20  </span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="o">*</span><span class="w"> </span><span class="nx">JS</span><span class="w"> </span><span class="nx">busca</span><span class="w"> </span><span class="sb">`calcAge`</span><span class="w"> </span><span class="nx">en</span><span class="w"> </span><span class="sb">`matilda`</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="nx">No</span><span class="w"> </span><span class="nx">está</span><span class="p">.</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="o">*</span><span class="w"> </span><span class="nx">Mira</span><span class="w"> </span><span class="nx">el</span><span class="w"> </span><span class="nx">prototipo</span><span class="w"> </span><span class="p">(</span><span class="sb">`matilda.__proto__`</span><span class="p">)</span><span class="w"> </span><span class="err">→</span><span class="w"> </span><span class="nx">Ahí</span><span class="w"> </span><span class="nx">está</span><span class="p">.</span><span class="w"> </span><span class="nx">Lo</span><span class="w"> </span><span class="nx">ejecuta</span><span class="p">.</span>
+</span></code></pre></div>
+<h3 id="propiedades-y-verificacion">Propiedades y Verificación<a class="headerlink" href="#propiedades-y-verificacion" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>__proto__</code>: Propiedad de la instancia que apunta al prototipo del constructor.</li>
+</ul>
+<p>matilda.<strong>proto</strong> === Person.prototype // true  </p>
+<ul>
+<li><code>isPrototypeOf</code>: Método para comprobar la vinculación.</li>
+</ul>
+<p>Person.prototype.isPrototypeOf(matilda) // true  </p>
+<p>Person.prototype.isPrototypeOf(Person) // false (Confusión común)</p>
+<h3 id="propiedades-propias-vs-heredadas">Propiedades propias vs Heredadas<a class="headerlink" href="#propiedades-propias-vs-heredadas" title="Permanent link">&para;</a></h3>
+<ul>
+<li>También podemos poner propiedades en el prototipo (<code>Person.prototype.species = 'Homo Sapiens'</code>).</li>
+</ul>
+<p>matilda.hasOwnProperty('firstName') // true (Está en el objeto)  </p>
+<p>matilda.hasOwnProperty('species') // false (Está en el prototipo)</p>
+<hr />
+<h3 id="prototypal-inheritance-y-the-prototype-chain">Prototypal Inheritance y The Prototype Chain<a class="headerlink" href="#prototypal-inheritance-y-the-prototype-chain" title="Permanent link">&para;</a></h3>
+<ul>
+<li>La "Cadena de Prototipos" es la serie de enlaces entre objetos.</li>
+<li>Es similar al Scope Chain, pero para buscar propiedades.</li>
+</ul>
+<h4 id="el-flujo-de-busqueda-lookup">El flujo de búsqueda (Lookup)<a class="headerlink" href="#el-flujo-de-busqueda-lookup" title="Permanent link">&para;</a></h4>
+<ol>
+<li>Busca en el objeto propio.</li>
+<li>Si no encuentra, mira en su <code>__proto__</code>.</li>
+<li>Si no encuentra, mira en el <code>__proto__</code> de ese prototipo.</li>
+<li>Continúa hasta llegar a <code>Object.prototype</code> (el tope de la cadena).</li>
+<li>Si supera eso, llega a <code>null</code> y devuelve <code>undefined</code>.</li>
+</ol>
+<h4 id="visualizacion-de-la-cadena-ejemplo-person">Visualización de la cadena (Ejemplo Person)<a class="headerlink" href="#visualizacion-de-la-cadena-ejemplo-person" title="Permanent link">&para;</a></h4>
+<p>matilda → Person.prototype → Object.prototype → null  </p>
+<ul>
+<li><code>matilda</code>: Tiene <code>firstName</code>, <code>birthYear</code>.</li>
+<li><code>Person.prototype</code>: Tiene <code>calcAge</code>, <code>species</code>.</li>
+<li><code>Object.prototype</code>: Tiene métodos universales como <code>.hasOwnProperty()</code>, <code>.toString()</code>.</li>
+</ul>
+<hr />
+<h3 id="prototypal-inheritance-en-objetos-nativos">Prototypal Inheritance en Objetos Nativos.<a class="headerlink" href="#prototypal-inheritance-en-objetos-nativos" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Cualquier array, función o elemento DOM en JS funciona igual.</li>
+</ul>
+<h4 id="arrays">Arrays<a class="headerlink" href="#arrays" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Cuando haces <code>const arr = [1, 2, 3]</code>, es una abreviatura de <code>new Array(1, 2, 3)</code>.</li>
+<li>
+<p><code>arr</code> hereda de <code>Array.prototype</code>.</p>
+</li>
+<li>
+<p>Por eso tienes acceso a <code>.map</code>, <code>.filter</code>, <code>.push</code>.</p>
+</li>
+<li>Esos métodos no están en tu array, están en el prototipo maestro de <code>Array</code>.</li>
+</ul>
+<h4 id="extender-prototipos-mala-practica">Extender Prototipos (Mala Práctica)<a class="headerlink" href="#extender-prototipos-mala-practica" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Podrías hacer esto:</li>
+</ul>
+<div class="language-js highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">unique</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">  </span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">[...</span><span class="ow">new</span><span class="w"> </span><span class="nb">Set</span><span class="p">(</span><span class="k">this</span><span class="p">)];</span><span class="w">  </span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="p">};</span>
+</span></code></pre></div>
+<ul>
+<li>Aunque funciona, no se recomienda:</li>
+<li>La próxima versión de JS podría añadir un método con el mismo nombre y romper tu código.</li>
+<li>En equipos grandes genera confusión sobre qué métodos son estándar y cuáles custom.</li>
+</ul>
+<h2 id="classes">Classes<a class="headerlink" href="#classes" title="Permanent link">&para;</a></h2>
+<p>Introducidas en ECMAScript 2015, son la sintaxis moderna para hacer OOP en JavaScript.</p>
+<p>Es vital entender que las clases en JS <strong>NO</strong> funcionan como en Java o C++.</p>
+<ul>
+<li>
+<p><strong>No traen un nuevo modelo de herencia:</strong> Por debajo, siguen utilizando <strong>Funciones Constructoras</strong> y <strong>Herencia Prototípica</strong>.</p>
+</li>
+<li>
+<p>Son simplemente una capa estética ("azúcar") para escribir lo mismo de forma más limpia y organizada.</p>
+</li>
+<li>
+<p><code>class</code>: Palabra clave para definirla.</p>
+</li>
+<li>
+<p><code>constructor()</code>: Método obligatorio (con ese nombre exacto) que funciona igual que la función constructora antigua. Se ejecuta inmediatamente al usar <code>new</code>.</p>
+</li>
+<li>
+<p><strong>Métodos:</strong> Se escriben dentro de la clase, pero fuera del constructor. <strong>Automáticamente se añaden al <code>.prototype</code></strong>.</p>
+</li>
+</ul>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">// Class expression</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1">// const PersonCl = class {}</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1">// Class declaration</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="kd">class</span><span class="w"> </span><span class="nx">PersonCl</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span><span class="w"> </span><span class="nx">birthYear</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">firstName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">firstName</span><span class="p">;</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">birthYear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">birthYear</span><span class="p">;</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="c1">// Los métodos se añadirán a .prototype automáticamente</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="nx">calcAge</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">2037</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">birthYear</span><span class="p">);</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="p">}</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="kd">const</span><span class="w"> </span><span class="nx">jessica</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">PersonCl</span><span class="p">(</span><span class="s1">&#39;Jessica&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">1996</span><span class="p">);</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="nx">jessica</span><span class="p">.</span><span class="nx">calcAge</span><span class="p">();</span><span class="w"> </span>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="c1">// jessica.__proto__ === PersonCl.prototype (TRUE)</span>
+</span></code></pre></div>
+<ul>
+<li>
+<p><strong>No Hoisting:</strong> A diferencia de las declaraciones de funciones, las clases no se elevan. Debes definirlas antes de usarlas.</p>
+</li>
+<li>
+<p><strong>First-Class Citizens:</strong> Se pueden pasar a funciones y retornar desde funciones.</p>
+</li>
+<li>
+<p><strong>Strict Mode:</strong> El cuerpo de una clase se ejecuta siempre en "use strict", incluso si no lo activaste en el archivo.</p>
+</li>
+</ul>
+<h3 id="getters-y-setters">Getters y Setters<a class="headerlink" href="#getters-y-setters" title="Permanent link">&para;</a></h3>
+<p>Son propiedades especiales que parecen valores normales pero que por debajo ejecutan funciones. Sirven para transformar datos al leerlos (<code>get</code>) o validarlos al escribirlos (<code>set</code>).</p>
+<p><strong>En Objetos Literales</strong>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">account</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="nx">owner</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Jonas&#39;</span><span class="p">,</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nx">movements</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="mf">530</span><span class="p">,</span><span class="w"> </span><span class="mf">120</span><span class="p">,</span><span class="w"> </span><span class="mf">300</span><span class="p">],</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="c1">// GETTER: Se usa como propiedad, no como función</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">latest</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">movements</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mf">1</span><span class="p">).</span><span class="nx">pop</span><span class="p">();</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="c1">// SETTER: Debe tener exactamente un parámetro</span>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="nx">set</span><span class="w"> </span><span class="nx">latest</span><span class="p">(</span><span class="nx">mov</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">movements</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">mov</span><span class="p">);</span>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="p">};</span>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">account</span><span class="p">.</span><span class="nx">latest</span><span class="p">);</span><span class="w"> </span><span class="c1">// 300 (Sin paréntesis)</span>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="nx">account</span><span class="p">.</span><span class="nx">latest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">50</span><span class="p">;</span><span class="w">         </span><span class="c1">// Se asigna con =</span>
+</span></code></pre></div></p>
+<p><strong>En Clases: Validación de Datos</strong></p>
+<p>Un patrón muy común es usar Setters para validar datos al momento de crear el objeto.</p>
+<ul>
+<li>
+<p><strong>El conflicto de nombres:</strong> Si el setter se llama igual que la propiedad del constructor (ej. <code>fullName</code>), se crea un bucle infinito (<em>Stack Overflow</em>).</p>
+</li>
+<li>
+<p><strong>Solución:</strong> Usar la convención <code>_</code> (guion bajo) para crear una variable "privada" temporal.</p>
+</li>
+</ul>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kd">class</span><span class="w"> </span><span class="nx">PersonCl</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">fullName</span><span class="p">,</span><span class="w"> </span><span class="nx">birthYear</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">fullName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fullName</span><span class="p">;</span><span class="w"> </span><span class="c1">// Esto dispara el setter automáticamente</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">birthYear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">birthYear</span><span class="p">;</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="c1">// Validación: El nombre debe tener espacios</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="nx">set</span><span class="w"> </span><span class="nx">fullName</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">name</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">_fullName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">name</span><span class="p">;</span><span class="w"> </span><span class="c1">// Guardamos en variable con _</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">            </span><span class="nx">alert</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">name</span><span class="si">}</span><span class="sb"> is not a full name!`</span><span class="p">);</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span><span class="nx">get</span><span class="w"> </span><span class="nx">fullName</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">_fullName</span><span class="p">;</span><span class="w"> </span><span class="c1">// Devolvemos la variable con _</span>
+</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="p">}</span>
+</span></code></pre></div>
+<h3 id="static-methods">Static Methods<a class="headerlink" href="#static-methods" title="Permanent link">&para;</a></h3>
+<p>Son métodos que están adjuntos al <strong>Constructor</strong> (la clase en sí), no al prototipo. Por tanto, las instancias (los objetos creados) <strong>NO</strong> pueden usarlos.</p>
+<ul>
+<li>
+<p><strong>Ejemplo nativo:</strong> <code>Array.from()</code>.</p>
+<ul>
+<li>
+<p><code>Array.from(document.querySelectorAll('h1'))</code> funciona.</p>
+</li>
+<li>
+<p><code>[1, 2, 3].from()</code> falla, porque <code>.from</code> no está en el prototipo de los arrays, está en el constructor <code>Array</code>.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Creación en Clases</strong></p>
+<p>Se usa la palabra clave <code>static</code>. Son útiles para funciones de utilidad (helpers) relacionadas con la clase pero que no dependen de una instancia específica.</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kd">class</span><span class="w"> </span><span class="nx">PersonCl</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">firstName</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">firstName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">firstName</span><span class="p">;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="c1">// Método de Instancia (Heredable)</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="nx">calcAge</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Edad...&#39;</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="c1">// Método Estático (Solo accesible desde PersonCl)</span>
+</span><span id="__span-6-10"><a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="nx">hey</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-6-11"><a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Hey there 👋&#39;</span><span class="p">);</span>
+</span><span id="__span-6-12"><a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="w"> </span><span class="c1">// Aquí &#39;this&#39; es la CLASE completa, no el objeto</span>
+</span><span id="__span-6-13"><a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-6-14"><a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="p">}</span>
+</span><span id="__span-6-15"><a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>
+</span><span id="__span-6-16"><a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="nx">PersonCl</span><span class="p">.</span><span class="nx">hey</span><span class="p">();</span><span class="w"> </span><span class="c1">// Funciona</span>
+</span><span id="__span-6-17"><a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="c1">// jessica.hey(); // Error: jessica.hey is not a function</span>
+</span></code></pre></div>
+<h3 id="herencia-entre-clases">Herencia entre Clases<a class="headerlink" href="#herencia-entre-clases" title="Permanent link">&para;</a></h3>
+<p>La herencia permite que una clase hija (Child) derive funcionalidades de una clase padre (Parent).</p>
+<p>Se utilizan dos palabras clave fundamentales:</p>
+<ol>
+<li>
+<p><strong><code>extends</code>:</strong> Establece la relación de herencia. Conecta los prototipos por debajo.</p>
+</li>
+<li>
+<p><strong><code>super</code>:</strong> Función especial que llama al constructor de la clase padre.</p>
+</li>
+</ol>
+<p><strong>Cuando una clase extiende a otra, el comportamiento del <code>constructor</code> cambia drásticamente:</strong></p>
+<ol>
+<li>
+<p><strong>Si NO necesitas nuevas propiedades:</strong></p>
+<p>No hace falta escribir un <code>constructor</code> en la clase hija. JS lo invoca automáticamente y pasa los argumentos al padre.</p>
+</li>
+<li>
+<p><strong>Si SÍ necesitas nuevas propiedades (El caso común):</strong></p>
+<ul>
+<li>
+<p>Debes escribir el constructor.</p>
+</li>
+<li>
+<p><strong>OBLIGATORIO:</strong> Debes llamar a <code>super()</code> <strong>antes</strong> de usar la palabra clave <code>this</code>.</p>
+</li>
+<li>
+<p><strong>¿Por qué?</strong> En una clase derivada, el objeto <code>this</code> no se crea hasta que se ejecuta <code>super()</code>. Si intentas acceder a <code>this</code> antes, obtendrás un <em>ReferenceError</em>.</p>
+</li>
+</ul>
+</li>
+</ol>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kd">class</span><span class="w"> </span><span class="nx">PersonCl</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">fullName</span><span class="p">,</span><span class="w"> </span><span class="nx">birthYear</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">fullName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">fullName</span><span class="p">;</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">birthYear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">birthYear</span><span class="p">;</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="nx">calcAge</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">2037</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">birthYear</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="p">}</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="c1">// StudentCl HEREDA de PersonCl</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="kd">class</span><span class="w"> </span><span class="nx">StudentCl</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">PersonCl</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">fullName</span><span class="p">,</span><span class="w"> </span><span class="nx">birthYear</span><span class="p">,</span><span class="w"> </span><span class="nx">course</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">        </span><span class="c1">// 1. Siempre primero: Llamada al constructor padre</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">        </span><span class="c1">// Esto crea el &#39;this&#39; inicial</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">        </span><span class="k">super</span><span class="p">(</span><span class="nx">fullName</span><span class="p">,</span><span class="w"> </span><span class="nx">birthYear</span><span class="p">);</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">        </span><span class="c1">// 2. Luego añadimos las propiedades nuevas</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">course</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">course</span><span class="p">;</span>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="w">    </span><span class="nx">introduce</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Hola, soy </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">fullName</span><span class="si">}</span><span class="sb"> y estudio </span><span class="si">${</span><span class="k">this</span><span class="p">.</span><span class="nx">course</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>
+</span><span id="__span-7-25"><a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="w">    </span><span class="c1">// Polimorfismo: Sobrescribir un método del padre</span>
+</span><span id="__span-7-26"><a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="w">    </span><span class="nx">calcAge</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-7-27"><a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Soy estudiante y tengo </span><span class="si">${</span><span class="mf">2037</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">birthYear</span><span class="si">}</span><span class="sb"> años (más o menos)`</span><span class="p">);</span>
+</span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-7-29"><a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="p">}</span>
+</span><span id="__span-7-30"><a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a>
+</span><span id="__span-7-31"><a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="kd">const</span><span class="w"> </span><span class="nx">martha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">StudentCl</span><span class="p">(</span><span class="s1">&#39;Martha Jones&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">2002</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Computer Science&#39;</span><span class="p">);</span>
+</span><span id="__span-7-32"><a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="nx">martha</span><span class="p">.</span><span class="nx">introduce</span><span class="p">();</span><span class="w"> </span><span class="c1">// Usa método propio</span>
+</span><span id="__span-7-33"><a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="nx">martha</span><span class="p">.</span><span class="nx">calcAge</span><span class="p">();</span><span class="w">   </span><span class="c1">// Usa método sobrescrito</span>
+</span></code></pre></div>
+<h3 id="encapsulamiento-class-fields">Encapsulamiento: Class Fields<a class="headerlink" href="#encapsulamiento-class-fields" title="Permanent link">&para;</a></h3>
+<p>Durante mucho tiempo, JS no tuvo privacidad real. Se usaba la convención <code>_propiedad</code> (guion bajo), pero eso no impedía que alguien modificara el dato desde fuera ("Fake Encapsulation").</p>
+<p>La propuesta moderna de <strong>Class Fields</strong> introduce 4 tipos de campos para solucionar esto y limpiar la sintaxis.</p>
+<p><strong>Public Fields</strong></p>
+<p>Son variables que se definen al nivel superior de la clase (fuera del constructor).</p>
+<ul>
+<li>
+<p><strong>Diferencia clave:</strong> Se añaden a <strong>todas las instancias</strong> (al objeto en sí), <strong>NO</strong> al prototipo.</p>
+</li>
+<li>
+<p>No usan <code>const</code> ni <code>let</code>.</p>
+</li>
+</ul>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">class</span><span class="w"> </span><span class="nx">Account</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">    </span><span class="c1">// Public Fields (Instancias)</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">    </span><span class="nx">locale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">navigator</span><span class="p">.</span><span class="nx">language</span><span class="p">;</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">    </span><span class="c1">// Estos campos estarán presentes en CADA objeto creado</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">owner</span><span class="p">,</span><span class="w"> </span><span class="nx">currency</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">owner</span><span class="p">;</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">currency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">currency</span><span class="p">;</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Private Fields</strong></p>
+<p>Utilizan el símbolo almohadilla <strong><code>#</code></strong>.</p>
+<ul>
+<li>
+<p><strong>Seguridad:</strong> Son verdaderamente privados. Si intentas acceder a ellos desde fuera de la clase (<code>acc.#movements</code>), JS lanzará un error de sintaxis.</p>
+</li>
+<li>
+<p><strong>Regla:</strong> Deben declararse (definirse) arriba del todo, fuera del constructor, antes de usarse dentro.</p>
+</li>
+</ul>
+<p><div class="language-javascript highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kd">class</span><span class="w"> </span><span class="nx">Account</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="c1">// 1. Definición obligatoria al inicio</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="n">#movements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">    </span><span class="n">#pin</span><span class="p">;</span><span class="w"> </span><span class="c1">// Podemos definir sin inicializar</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">    </span><span class="kr">constructor</span><span class="p">(</span><span class="nx">owner</span><span class="p">,</span><span class="w"> </span><span class="nx">currency</span><span class="p">,</span><span class="w"> </span><span class="nx">pin</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">owner</span><span class="p">;</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">currency</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">currency</span><span class="p">;</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="w">        </span><span class="c1">// 2. Asignación dentro del constructor</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">#pin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pin</span><span class="p">;</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="w">        </span><span class="c1">// this.#movements es accesible aquí dentro</span>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="w">    </span><span class="c1">// API Pública para interactuar con datos privados</span>
+</span><span id="__span-9-16"><a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="w">    </span><span class="nx">deposit</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-17"><a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">#movements</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
+</span><span id="__span-9-18"><a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-9-19"><a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>
+</span><span id="__span-9-20"><a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="w">    </span><span class="nx">getMovements</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-9-21"><a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">#movements</span><span class="p">;</span>
+</span><span id="__span-9-22"><a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-9-23"><a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="p">}</span>
+</span><span id="__span-9-24"><a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>
+</span><span id="__span-9-25"><a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="kd">const</span><span class="w"> </span><span class="nx">acc1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Account</span><span class="p">(</span><span class="s1">&#39;Jonas&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;EUR&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">1111</span><span class="p">);</span>
+</span><span id="__span-9-26"><a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="nx">acc1</span><span class="p">.</span><span class="nx">deposit</span><span class="p">(</span><span class="mf">100</span><span class="p">);</span>
+</span><span id="__span-9-27"><a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="c1">// console.log(acc1.#movements); ❌ ERROR: Private field &#39;#movements&#39; must be declared in an enclosing class</span>
+</span></code></pre></div>
+<strong>Private Methods</strong></p>
+<ul>
+<li>
+<p><strong>Sintaxis:</strong> <code>#nombreMetodo()</code>.</p>
+</li>
+<li>
+<p>Útiles para lógica interna auxiliar que no quieres que el usuario final toque.</p>
+</li>
+<li>
+<p><em>(Nota: El soporte en navegadores para esto llegó un poco más tarde que para los campos, pero hoy es estándar).</em></p>
+</li>
+</ul>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kd">class</span><span class="w"> </span><span class="nx">Account</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="c1">// Método público</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">    </span><span class="nx">requestLoan</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="n">#approveLoan</span><span class="p">(</span><span class="nx">val</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">            </span><span class="k">this</span><span class="p">.</span><span class="nx">deposit</span><span class="p">(</span><span class="nx">val</span><span class="p">);</span>
+</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Préstamo aprobado&#39;</span><span class="p">);</span>
+</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-10-9"><a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
+</span><span id="__span-10-10"><a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="w">    </span><span class="c1">// Método Privado (Solo accesible dentro de la clase)</span>
+</span><span id="__span-10-11"><a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span><span class="n">#approveLoan</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-10-12"><a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// Lógica compleja oculta</span>
+</span><span id="__span-10-13"><a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-10-14"><a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="p">}</span>
+</span></code></pre></div>
+<p><strong>Static Public/Private Fields</strong></p>
+<p>Podemos combinar static con lo anterior.</p>
+<ul>
+<li>
+<p><code>static numInstances</code> = 0; -&gt; Accesible solo como Account.numInstances.</p>
+</li>
+<li>
+<p><code>static #helper()</code> -&gt; Accesible solo dentro de la clase.</p>
+</li>
+</ul>
+<h2 id="objectcreate">Object.create()<a class="headerlink" href="#objectcreate" title="Permanent link">&para;</a></h2>
+<p>Es la tercera forma de implementar herencia prototípica. Es la más "pura" porque desconecta la idea de clases/constructores y simplemente vincula objetos con objetos.</p>
+<p><strong>Funcionamiento</strong></p>
+<ul>
+<li>
+<p>No usa <code>new</code>.</p>
+</li>
+<li>
+<p>No usa <code>.prototype</code> property de la misma forma simulada.</p>
+</li>
+<li>
+<p>No tiene constructor automático.</p>
+</li>
+</ul>
+<p>Simplemente creas un objeto que servirá de prototipo, y luego creas nuevos objetos diciéndoles explícitamente: "Tu prototipo será este objeto de aquí".</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1">// 1. Definimos el objeto que servirá de Prototipo</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">PersonProto</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span><span class="nx">calcAge</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mf">2037</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">birthYear</span><span class="p">);</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">    </span><span class="p">},</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="w">    </span><span class="c1">// Función manual para inicializar (no es un constructor real)</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="w">    </span><span class="nx">init</span><span class="p">(</span><span class="nx">firstName</span><span class="p">,</span><span class="w"> </span><span class="nx">birthYear</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">firstName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">firstName</span><span class="p">;</span>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="nx">birthYear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">birthYear</span><span class="p">;</span>
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a><span class="p">};</span>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="c1">// 2. Creamos el objeto vinculado</span>
+</span><span id="__span-11-15"><a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="c1">// &#39;steven&#39; será un objeto vacío con PersonProto en su __proto__</span>
+</span><span id="__span-11-16"><a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="kd">const</span><span class="w"> </span><span class="nx">steven</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">PersonProto</span><span class="p">);</span>
+</span><span id="__span-11-17"><a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>
+</span><span id="__span-11-18"><a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">steven</span><span class="p">);</span><span class="w"> </span><span class="c1">// {}</span>
+</span><span id="__span-11-19"><a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="nx">steven</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Steven&#39;</span><span class="p">;</span>
+</span><span id="__span-11-20"><a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="nx">steven</span><span class="p">.</span><span class="nx">birthYear</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2002</span><span class="p">;</span>
+</span><span id="__span-11-21"><a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="nx">steven</span><span class="p">.</span><span class="nx">calcAge</span><span class="p">();</span><span class="w"> </span><span class="c1">// Funciona por delegación</span>
+</span><span id="__span-11-22"><a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>
+</span><span id="__span-11-23"><a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="c1">// 3. Manera más organizada usando el método init manual</span>
+</span><span id="__span-11-24"><a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="kd">const</span><span class="w"> </span><span class="nx">sarah</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">PersonProto</span><span class="p">);</span>
+</span><span id="__span-11-25"><a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a><span class="nx">sarah</span><span class="p">.</span><span class="nx">init</span><span class="p">(</span><span class="s1">&#39;Sarah&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">1979</span><span class="p">);</span>
+</span><span id="__span-11-26"><a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a><span class="nx">sarah</span><span class="p">.</span><span class="nx">calcAge</span><span class="p">();</span>
+</span></code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["navigation.tabs"],"search":"../../assets/javascripts/workers/search.1bfe1b73.min.js","tags":null,"translations":{"clipboard.copied":"Copiado al portapapeles","clipboard.copy":"Copiar al portapapeles","search.result.more.one":"1 más en esta página","search.result.more.other":"# más en esta página","search.result.none":"No se encontraron documentos","search.result.one":"1 documento encontrado","search.result.other":"# documentos encontrados","search.result.placeholder":"Teclee para comenzar búsqueda","search.result.term.missing":"Falta","select.version":"Seleccionar versión"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.6008f134.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -9,6 +9,7 @@ nav = [
         {"Fundamentos teóricos" = "java-script/teorical-fundations.md"},
         {"Programación orientada a Objetos" = "java-script/oop.md"},
         {"Asincronía" = "java-script/async.md"},
+        {"DOM" = "java-script/dom.md"},
     ] },
     { "SQL" = [
         "sql/index.md",
